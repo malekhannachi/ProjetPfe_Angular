@@ -31,6 +31,16 @@ export class AddNewsComponent implements OnInit {
     this.addForm = this.fb.group(formControles);
   }
 
+  get titre() {
+    return this.addForm.get('titre');
+  }
+  get description() {
+    return this.addForm.get('description');
+  }
+  get image() {
+    return this.addForm.get('image');
+  }
+
   ngOnInit(): void {}
 
   addNews() {

@@ -10980,7 +10980,7 @@ a:focus {
 }
 
 .bg-login-image {
-  background: url("./../images/Login.png") no-repeat;
+  background: url("./../img/Login.png") no-repeat;
   background-position: center;
   background-size: contain;
 }

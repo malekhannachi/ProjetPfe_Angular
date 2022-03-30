@@ -31,6 +31,16 @@ export class UpdateNewsComponent implements OnInit {
     this.updateForm = this.fb.group(formControles);
   }
 
+  get titre() {
+    return this.updateForm.get('titre');
+  }
+  get description() {
+    return this.updateForm.get('description');
+  }
+  get image() {
+    return this.updateForm.get('image');
+  }
+
   ngOnInit(): void {}
 
   updateNews() {
