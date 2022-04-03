@@ -5882,6 +5882,9 @@ a.close.disabled {
   opacity: 0;
 }
 
+.modal-backdrop.show {
+  opacity: 0.5;
+}
 
 .modal-header {
   display: flex;

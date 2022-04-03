@@ -5,6 +5,7 @@ import { AdminLoginComponent } from './components/layouts/admin-login/admin-logi
 import { FrontLayoutComponent } from './components/layouts/front-layout/front-layout.component';
 import { StudentLayoutComponent } from './components/layouts/student-layout/student-layout.component';
 import { TeacherLayoutComponent } from './components/layouts/teacher-layout/teacher-layout.component';
+import { AuthAdminGuard } from './guards/auth-admin.guard';
 
 const routes: Routes = [
   {
@@ -36,10 +37,11 @@ const routes: Routes = [
   },
   { path: 'student', component: StudentLayoutComponent },
   { path: 'teacher', component: TeacherLayoutComponent },
-  { path: 'loginadmin', component: AdminLoginComponent },
+  { path: 'auth-admin', component: AdminLoginComponent },
   {
     path: 'admin',
     component: AdminLayoutComponent,
+    canActivate: [AuthAdminGuard],
     children: [
       {
         path: 'dashboard',
