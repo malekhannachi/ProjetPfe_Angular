@@ -5,6 +5,8 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { NewsService } from 'src/app/services/news.service';
 
 @Component({
   selector: 'app-update-news',
@@ -14,7 +16,11 @@ import {
 export class UpdateNewsComponent implements OnInit {
   updateForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private route: ActivatedRoute,
+    private newsService: NewsService
+  ) {
     let formControles = {
       titre: new FormControl('', [
         Validators.required,

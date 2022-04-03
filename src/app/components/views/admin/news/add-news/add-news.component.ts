@@ -5,6 +5,8 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { News } from 'src/app/models/news';
+import { NewsService } from 'src/app/services/news.service';
 
 @Component({
   selector: 'app-add-news',
@@ -14,7 +16,7 @@ import {
 export class AddNewsComponent implements OnInit {
   addForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private newsService: NewsService) {
     let formControles = {
       titre: new FormControl('', [
         Validators.required,
@@ -44,6 +46,6 @@ export class AddNewsComponent implements OnInit {
   ngOnInit(): void {}
 
   addNews() {
-    console.log(this.addForm.value);
+    let data = this.addForm.value;
   }
 }

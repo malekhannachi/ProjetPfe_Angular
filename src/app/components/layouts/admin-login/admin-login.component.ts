@@ -6,6 +6,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Admin } from 'src/app/models/admin';
+import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
   selector: 'app-admin-login',
@@ -15,7 +17,11 @@ import { Router } from '@angular/router';
 export class AdminLoginComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private adminService: AdminService
+  ) {
     let formControls = {
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [
@@ -37,7 +43,27 @@ export class AdminLoginComponent implements OnInit {
   ngOnInit(): void {}
 
   loginAdmin() {
-    this.router.navigate(['/admin']);
-    console.log(this.loginForm.value);
+    let data = this.loginForm.value;
+
+    let admin = new Admin(
+      undefined,
+      undefined,
+      undefined,
+      data.email,
+      data.password
+    );
+    console.log(admin);
+
+    this.adminService.loginAdmin(admin).subscribe(
+      (res) => {
+        console.log(res);
+        let token = res.token;
+        localStorage.setItem('myToken', token);
+        this.router.navigate(['/admin']);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 }
