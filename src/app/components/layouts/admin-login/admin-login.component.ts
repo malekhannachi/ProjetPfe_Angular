@@ -40,7 +40,12 @@ export class AdminLoginComponent implements OnInit {
     return this.loginForm.get('password');
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    let isLoggedInAdmin = this.adminService.isLoggedInAdmin();
+    if (isLoggedInAdmin) {
+      this.router.navigate(['/admin']);
+    }
+  }
 
   loginAdmin() {
     let data = this.loginForm.value;
