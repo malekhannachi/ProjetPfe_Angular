@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgToastService } from 'ng-angular-popup';
 import { NewsService } from 'src/app/services/news.service';
 
 @Component({
@@ -9,7 +10,10 @@ import { NewsService } from 'src/app/services/news.service';
 export class ListNewsComponent implements OnInit {
   ListNews: any[] = [];
 
-  constructor(private newsService: NewsService) {}
+  constructor(
+    private newsService: NewsService,
+    private toast: NgToastService
+  ) {}
 
   ngOnInit(): void {
     this.newsService.getAllNews().subscribe(
@@ -27,7 +31,10 @@ export class ListNewsComponent implements OnInit {
     this.newsService.deleteNews(news.id).subscribe(
       (result) => {
         console.log(result);
-
+        this.toast.error({
+          detail: 'Error Message',
+          summary: result.Message,
+        });
         let index = this.ListNews.indexOf(news);
         this.ListNews.splice(index, 1);
       },
