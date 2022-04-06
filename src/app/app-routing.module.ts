@@ -35,8 +35,60 @@ const routes: Routes = [
       },
     ],
   },
-  { path: 'student', component: StudentLayoutComponent },
-  { path: 'teacher', component: TeacherLayoutComponent },
+  {
+    path: 'student',
+    component: StudentLayoutComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () =>
+          import('./components/views/student/home/home.module').then(
+            (m) => m.HomeModule
+          ),
+      },
+      {
+        path: 'auth-student',
+        loadChildren: () =>
+          import('./components/views/student/login/login.module').then(
+            (m) => m.LoginModule
+          ),
+      },
+      {
+        path: 'register-student',
+        loadChildren: () =>
+          import('./components/views/student/register/register.module').then(
+            (m) => m.RegisterModule
+          ),
+      },
+    ],
+  },
+  {
+    path: 'teacher',
+    component: TeacherLayoutComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () =>
+          import('./components/views/teacher/home/home.module').then(
+            (m) => m.HomeModule
+          ),
+      },
+      {
+        path: 'auth-teacher',
+        loadChildren: () =>
+          import('./components/views/teacher/login/login.module').then(
+            (m) => m.LoginModule
+          ),
+      },
+      {
+        path: 'register-teacher',
+        loadChildren: () =>
+          import('./components/views/teacher/register/register.module').then(
+            (m) => m.RegisterModule
+          ),
+      },
+    ],
+  },
   { path: 'auth-admin', component: AdminLoginComponent },
   {
     path: 'admin',

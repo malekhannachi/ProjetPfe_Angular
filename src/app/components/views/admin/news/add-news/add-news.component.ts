@@ -47,5 +47,16 @@ export class AddNewsComponent implements OnInit {
 
   addNews() {
     let data = this.addForm.value;
+    let news = new News( data.titre, data.description, data.image);
+    console.log(news);
+    console.log(data);
+    this.newsService.addNews(news).subscribe(
+      (res) => {
+        console.log(res);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 }
