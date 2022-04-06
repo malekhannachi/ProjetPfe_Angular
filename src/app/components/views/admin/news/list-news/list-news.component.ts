@@ -19,6 +19,7 @@ export class ListNewsComponent implements OnInit {
     this.newsService.getAllNews().subscribe(
       (res) => {
         this.ListNews = res;
+
         console.log(res);
       },
       (err) => {
@@ -38,7 +39,9 @@ export class ListNewsComponent implements OnInit {
         let index = this.ListNews.indexOf(news);
         this.ListNews.splice(index, 1);
       },
-      (error) => {}
+      (error) => {
+        console.log(error);
+      }
     );
   }
 }
