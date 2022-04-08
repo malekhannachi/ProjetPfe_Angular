@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { News } from 'src/app/models/news';
 import { NewsService } from 'src/app/services/news.service';
 
@@ -16,7 +17,11 @@ import { NewsService } from 'src/app/services/news.service';
 export class AddNewsComponent implements OnInit {
   addForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private newsService: NewsService) {
+  constructor(
+    private fb: FormBuilder,
+    private newsService: NewsService,
+    private route: Router
+  ) {
     let formControles = {
       titre: new FormControl('', [
         Validators.required,
@@ -47,12 +52,13 @@ export class AddNewsComponent implements OnInit {
 
   addNews() {
     let data = this.addForm.value;
-    let news = new News( data.titre, data.description, data.image);
+    let news = new News(undefined, data.titre, data.description, data.image);
     console.log(news);
     console.log(data);
     this.newsService.addNews(news).subscribe(
       (res) => {
         console.log(res);
+        this.route.navigate(['admin/list-news']);
       },
       (err) => {
         console.log(err);

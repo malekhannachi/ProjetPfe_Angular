@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { News } from 'src/app/models/news';
 import { NewsService } from 'src/app/services/news.service';
 
 @Component({
@@ -47,9 +48,35 @@ export class UpdateNewsComponent implements OnInit {
     return this.updateForm.get('image');
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    let idNews = this.route.snapshot.params['id'];
+    console.log(idNews);
+    this.newsService.getOneNews(idNews).subscribe(
+      (result) => {
+        let news = result;
+        console.log(news);
+
+        this.updateForm.patchValue({
+          titre: news.titre,
+          description: news.description,
+        });
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
 
   updateNews() {
-    console.log(this.updateForm.value);
+    let data = this.updateForm.value;
+    let news = new News(data.titre, data.description, data.image);
+    this.newsService.updateNews(news).subscribe(
+      (result) => {
+        console.log(result);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 }

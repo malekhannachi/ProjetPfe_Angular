@@ -24,7 +24,7 @@ export class NewsService {
     return this.http.patch<any>(this.updateNewsUrl, news);
   }
   getOneNews(id: any) {
-    return this.http.delete<any>(this.getOneNewsUrl + id);
+    return this.http.get<any>(this.getOneNewsUrl + id);
   }
 
   deleteNews(id: Number) {

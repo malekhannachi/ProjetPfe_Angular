@@ -8,7 +8,7 @@ const routes: Routes = [
   { path: 'list-news', component: ListNewsComponent },
   { path: '', component: ListNewsComponent },
   { path: 'add-news', component: AddNewsComponent },
-  { path: 'update-news', component: UpdateNewsComponent },
+  { path: 'update-news/:id', component: UpdateNewsComponent },
 ];
 
 @NgModule({
