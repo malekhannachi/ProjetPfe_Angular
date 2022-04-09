@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder,FormControl,FormGroup,Validators,} from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import { Admin } from 'src/app/models/admin';
@@ -13,10 +18,12 @@ import { AdminService } from 'src/app/services/admin.service';
 export class AdminLoginComponent implements OnInit {
   loginForm: FormGroup;
 
+
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private adminService: AdminService, private toast: NgToastService
+    private adminService: AdminService,
+    private toast: NgToastService
   ) {
     let formControls = {
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -41,7 +48,6 @@ export class AdminLoginComponent implements OnInit {
     if (isLoggedInAdmin) {
       this.router.navigate(['/admin']);
     }
-    
   }
 
   loginAdmin() {
@@ -59,14 +65,22 @@ export class AdminLoginComponent implements OnInit {
     this.adminService.loginAdmin(admin).subscribe(
       (res) => {
         console.log(res);
-        this.toast.success({detail:"Success Message",summary:"connexion réussie",duration:5000});
+        this.toast.success({
+          detail: 'Success Message',
+          summary: 'connexion réussie',
+          duration: 5000,
+        });
         let token = res.token;
         localStorage.setItem('myToken', token);
+      
         this.router.navigate(['/admin']);
       },
       (err) => {
         console.log(err);
-        this.toast.warning({detail:"Error Message",summary:"la connexion a échoué, réessayez plus tard"});
+        this.toast.warning({
+          detail: 'Error Message',
+          summary: 'la connexion a échoué, réessayez plus tard',
+        });
       }
     );
   }

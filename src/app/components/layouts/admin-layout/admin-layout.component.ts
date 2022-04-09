@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
   selector: 'app-admin-layout',
@@ -7,9 +8,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./admin-layout.component.css'],
 })
 export class AdminLayoutComponent implements OnInit {
-  constructor(private route: Router) {}
+  adminData: any;
+  constructor(private route: Router, private adminService: AdminService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.adminData = this.adminService.saveDataProfil();
+    console.log(this.adminData);
+  }
 
   logout() {
     localStorage.removeItem('myToken');

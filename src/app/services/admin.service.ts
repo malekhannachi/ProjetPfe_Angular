@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Admin } from '../models/admin';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { Token } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root',
@@ -26,5 +28,12 @@ export class AdminService {
     } else {
       return false;
     }
+  }
+
+  saveDataProfil() {
+    const helper = new JwtHelperService();
+    let myRawToken = localStorage.getItem('myToken') || '{}';
+    const decodedToken = helper.decodeToken(myRawToken);
+    return decodedToken.data;
   }
 }
