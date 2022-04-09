@@ -14,60 +14,56 @@
         </div>
 
         <div class="card-body">
+
             <table class="table">
                 <thead>
                     <tr>
                         <th>Cin</th>
-                        <th>num d'iscription</th>
                         <th>Prénom</th>
                         <th>Nom</th>
                         <th>date de naissance</th>
-                        <th>lieu de naissance</th>
+                        <th>Classe</th>
+                        <th>groupe</th>
+                        <th>Nature de Bac</th>
+                        <th>anneé de Bac</th>
+
                         <th>État du compte</th>
                         <th>#</th>
                     </tr>
+
                 </thead>
+
                 <tbody>
-                    <tr>
-                        <td class="align-middle">1</td>
-                        <td class="align-middle">0250589</td>
-                        <td class="align-middle">Nouha</td>
-                        <td class="align-middle">Ayari</td>
-                        <td class="align-middle">09/10/1999</td>
-                        <td class="align-middle">bizerte</td>
+
+                    <tr *ngFor="let student of listStudent">
+                        <td class="align-middle">{{student.cin}}</td>
+                        <td class="align-middle">{{student.lastname}}</td>
+                        <td class="align-middle">{{student.firstname}}</td>
+                        <td class="align-middle">{{student.date}}</td>
+                        <td class="align-middle">0{{student.classe}}</td>
+                        <td class="align-middle">{{student.groupe}}</td>
+
+                        <td class="align-middle">{{student.nature_bac}}</td>
+
 
                         <td class="align-middle">
-                            <div class="badge badge-pill badge-success">Active</div>
+                            <div class="badge badge-pill badge-success">{{student.accountState}}</div>
                         </td>
                         <td class="align-middle">
                             <button class="btn btn-sm btn-dark mx-2">
                                 <i class="fas fa-user-lock"></i>
                             </button>
-                            <button class="btn btn-sm btn-danger  mx-2" (click)="deleleStudent()">
+                            <button class="btn btn-sm btn-danger  mx-2" (click)="deleleStudent(student)">
                                 <i class="fas fa-trash-alt"></i>
                             </button>
                         </td>
                     </tr>
-                    <tr>
-                        <td class="align-middle">2901014</td>
-                        <td class="align-middle">55205</td>
-                        <td class="align-middle">Chedy</td>
-                        <td class="align-middle">Ayari</td>
-                        <td class="align-middle">09/10/1999</td>
-                        <td class="align-middle">bizerte</td>
-                        <td class="align-middle">
-                            <div class="badge badge-pill badge-danger">Disabled</div>
-                        </td>
-                        <td class="align-middle">
-                            <button class="btn btn-sm btn-info mx-2">
-                                <i class="fas fa-user-check"></i>
-                            </button>
-                            <button class="btn btn-sm btn-danger  mx-2">
-                                <i class="fas fa-trash-alt"></i>
-                            </button>
-                    </tr>
+
                 </tbody>
+
             </table>
+            <div *ngIf="listStudent.length == 0" class="alert alert-warning">Aucun étudiant trouvé</div>
+
         </div>
     </div>
 </div>
