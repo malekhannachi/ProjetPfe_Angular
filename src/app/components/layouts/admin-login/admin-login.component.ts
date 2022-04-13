@@ -18,7 +18,6 @@ import { AdminService } from 'src/app/services/admin.service';
 export class AdminLoginComponent implements OnInit {
   loginForm: FormGroup;
 
-
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -52,6 +51,7 @@ export class AdminLoginComponent implements OnInit {
 
   loginAdmin() {
     let data = this.loginForm.value;
+    console.log(this.loginForm.value.email);
 
     let admin = new Admin(
       undefined,
@@ -72,7 +72,7 @@ export class AdminLoginComponent implements OnInit {
         });
         let token = res.token;
         localStorage.setItem('myToken', token);
-      
+
         this.router.navigate(['/admin']);
       },
       (err) => {

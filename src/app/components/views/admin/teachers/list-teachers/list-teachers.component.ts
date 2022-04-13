@@ -35,4 +35,17 @@ export class ListTeachersComponent implements OnInit {
       }
     );
   }
+
+  updateTeacherState(teacher: any) {
+    console.log(teacher);
+
+    this.teacherService.updateTeacher(teacher).subscribe(
+      (result) => {
+        let index = this.listTeacher.indexOf(teacher);
+        this.listTeacher[index].accountState =
+          !this.listTeacher[index].accountState;
+      },
+      (err) => console.log(err)
+    );
+  }
 }
