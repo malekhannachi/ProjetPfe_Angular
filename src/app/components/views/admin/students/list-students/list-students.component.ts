@@ -34,4 +34,17 @@ export class ListStudentsComponent implements OnInit {
       }
     );
   }
+
+  updateStudentState(student: any) {
+    console.log(student);
+
+    this.studentService.updateStudent(student).subscribe(
+      (result) => {
+        let index = this.listStudent.indexOf(student);
+        this.listStudent[index].accountState =
+          !this.listStudent[index].accountState;
+      },
+      (err) => console.log(err)
+    );
+  }
 }

@@ -44,14 +44,24 @@
                         <td class="align-middle">{{student.groupe}}</td>
 
                         <td class="align-middle">{{student.nature_bac}}</td>
+                        <td class="align-middle">{{student.annee_bac}}</td>
 
-
-                        <td class="align-middle">
-                            <div class="badge badge-pill badge-success">{{student.accountState}}</div>
+                        <td class="align-middle" *ngIf="student.accountState">
+                            <div class="badge badge-pill badge-success">Activé</div>
                         </td>
+                        <td class="align-middle" *ngIf="!student.accountState">
+                            <div class="badge badge-pill badge-danger">désactivé</div>
+
+
                         <td class="align-middle">
-                            <button class="btn btn-sm btn-dark mx-2">
+
+                            <button *ngIf="student.accountState" class="btn btn-sm btn-dark"
+                                (click)="updateStudentState(student)">
                                 <i class="fas fa-user-lock"></i>
+                            </button>
+                            <button *ngIf="!student.accountState" class="btn btn-sm btn-success"
+                                (click)="updateStudentState(student)">
+                                <i class="fas fa-user-check"></i>
                             </button>
                             <button class="btn btn-sm btn-danger  mx-2" (click)="deleleStudent(student)">
                                 <i class="fas fa-trash-alt"></i>
