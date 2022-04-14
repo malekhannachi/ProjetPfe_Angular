@@ -55,9 +55,9 @@ export class AuthTeacherComponent implements OnInit {
         console.log(res);
 
         let token = res.token;
-        localStorage.setItem('myToken', token);
+        localStorage.setItem('TokenTeacher', token);
 
-        this.router.navigate(['/admin']);
+        this.router.navigate(['/teacher']);
       },
       (error) => {
         console.log(error);
