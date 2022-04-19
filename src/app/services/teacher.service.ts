@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Teacher } from '../models/teacher';
 
 @Injectable({
@@ -15,14 +16,14 @@ export class TeacherService {
 
   constructor(private http: HttpClient) {}
 
-  getAllTeachers() {
-    return this.http.get<any>(this.getAllTeachersUrl);
+  getAllTeachers(): Observable<Object> {
+    return this.http.get<Object>(this.getAllTeachersUrl);
   }
   deleteTeacher(id: Number) {
     return this.http.delete<any>(this.deleteTeacherUrl + id);
   }
 
-  updateTeacher(teacher :Teacher) {
+  updateTeacher(teacher: Teacher) {
     return this.http.patch<any>(this.updateTeacherUrl, teacher);
   }
   //register and login for teacher
