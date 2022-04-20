@@ -26,12 +26,12 @@ export class AddNewsComponent implements OnInit {
       titre: new FormControl('', [
         Validators.required,
         Validators.pattern("[a-z .'-]+"),
-        Validators.minLength(2),
+        Validators.minLength(4),
       ]),
       description: new FormControl('', [
         Validators.required,
         Validators.pattern("[a-z .'-]+"),
-        Validators.minLength(2),
+        Validators.maxLength(30),
       ]),
       image: new FormControl('', [Validators.required]),
     };

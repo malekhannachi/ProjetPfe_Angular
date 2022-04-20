@@ -28,7 +28,7 @@ export class AdminLoginComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [
         Validators.required,
-        Validators.minLength(8),
+        Validators.minLength(2)
       ]),
     };
 
@@ -77,7 +77,7 @@ export class AdminLoginComponent implements OnInit {
       },
       (err) => {
         console.log(err);
-        this.toast.warning({
+        this.toast.error({
           detail: 'Error Message',
           summary: 'la connexion a échoué, réessayez plus tard',
         });

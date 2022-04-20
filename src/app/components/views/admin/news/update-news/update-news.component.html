@@ -17,17 +17,37 @@
                 <div class="form-group">
                     <label for="titre" id="titre">Titre : </label>
                     <input type="text" class="form-control" formControlName="titre">
-
+                    <div *ngIf="titre?.touched && titre?.invalid">
+                        <small class="text-danger" *ngIf="titre?.errors?.['required']">champ
+                            est obligatoire</small>
+                        <small class="text-danger" *ngIf="titre?.errors?.['pattern']">champ est
+                            inccorect</small>
+                        <small class="text-danger" *ngIf="titre?.errors?.['minLength']">minuim 4 caractéres
+                        </small>
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <label for="description" id="description">Description : </label>
                     <input type="text" class="form-control" formControlName="description">
+                    <div *ngIf="description?.touched && description?.invalid">
+                        <small class="text-danger" *ngIf="description?.errors?.['required']">champ
+                            est obligatoire</small>
+                        <small class="text-danger" *ngIf="description?.errors?.['pattern']">champ est
+                            inccorect</small>
+                        <small class="text-danger" *ngIf="description?.errors?.['minLength']">max 30 caractéres
+                        </small>
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <label for="photo" id="photo">Image : </label>
                     <input type="file" class="form-control-file" formControlName="image">
+                    <div *ngIf="image?.touched && image?.invalid">
+                        <small class="text-danger" *ngIf="image?.errors?.['required']">image
+                            est obligatoire</small>
+
+                    </div>
                 </div>
                 <button class="btn btn-sm btn-warning mt-3" [disabled]="updateForm.invalid">Modifier</button>
             </form>
