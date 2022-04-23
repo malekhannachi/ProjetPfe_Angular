@@ -32,7 +32,7 @@ export class AdminService {
 
   saveDataProfil() {
     const helper = new JwtHelperService();
-    let myRawToken = localStorage.getItem('myToken') || '{}';
+    let myRawToken:any = localStorage.getItem('myToken') ;
     const decodedToken = helper.decodeToken(myRawToken);
     return decodedToken.data;
   }

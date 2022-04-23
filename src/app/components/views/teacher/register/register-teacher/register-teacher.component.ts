@@ -60,7 +60,12 @@ export class RegisterTeacherComponent implements OnInit {
     return this.registerForm.get('password');
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    let isLoggedInTeacher = this.teacherService.isLoggedInTeacher();
+    if (isLoggedInTeacher) {
+      this.router.navigate(['/teacher/account-teacher']);
+    }
+  }
 
   registerTeacher() {
     let data = this.registerForm.value;
@@ -75,6 +80,7 @@ export class RegisterTeacherComponent implements OnInit {
       data.rib,
       data.grade,
       data.departement
+      
     );
     console.log(teacher);
 

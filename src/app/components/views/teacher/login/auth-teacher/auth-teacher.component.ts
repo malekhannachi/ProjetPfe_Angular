@@ -33,7 +33,12 @@ export class AuthTeacherComponent implements OnInit {
     this.loginForm = this.fb.group(formControls);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    let isLoggedInTeacher = this.teacherService.isLoggedInTeacher();
+    if (isLoggedInTeacher) {
+      this.router.navigate(['/teacher/account-teacher']);
+    }
+  }
 
   loginteacher() {
     let data = this.loginForm.value;
@@ -57,7 +62,7 @@ export class AuthTeacherComponent implements OnInit {
         let token = res.token;
         localStorage.setItem('TokenTeacher', token);
 
-        this.router.navigate(['/teacher']);
+        this.router.navigate(['teacher/account-teacher']);
       },
       (error) => {
         console.log(error);

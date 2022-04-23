@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Teacher } from '../models/teacher';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root',
@@ -37,8 +38,9 @@ export class TeacherService {
   }
 
   //test teacher is logged or no
+ 
   isLoggedInTeacher() {
-    let token = localStorage.getItem('myToken');
+    let token = localStorage.getItem('TokenTeacher');
 
     if (token) {
       return true;
@@ -46,4 +48,13 @@ export class TeacherService {
       return false;
     }
   }
+
+  saveDataProfil() {
+    const helper = new JwtHelperService();
+    let myRawToken:any = localStorage.getItem('TokenTeacher') ;
+    const decodedToken = helper.decodeToken(myRawToken);
+    return decodedToken.data;
+  }
+
+  
 }

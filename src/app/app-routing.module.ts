@@ -6,6 +6,7 @@ import { FrontLayoutComponent } from './components/layouts/front-layout/front-la
 import { StudentLayoutComponent } from './components/layouts/student-layout/student-layout.component';
 import { TeacherLayoutComponent } from './components/layouts/teacher-layout/teacher-layout.component';
 import { AuthAdminGuard } from './guards/auth-admin.guard';
+import { AuthTeacherGuard } from './guards/auth-teacher.guard';
 
 const routes: Routes = [
   {
@@ -60,6 +61,13 @@ const routes: Routes = [
             (m) => m.RegisterModule
           ),
       },
+      {
+        path: 'account-student',
+        loadChildren: () =>
+          import(
+            './components/views/student/student-authenticated/student-authenticated.module'
+          ).then((m) => m.StudentAuthenticatedModule),
+      },
     ],
   },
   {
@@ -85,6 +93,23 @@ const routes: Routes = [
         loadChildren: () =>
           import('./components/views/teacher/register/register.module').then(
             (m) => m.RegisterModule
+          ),
+      },
+      {
+        path: 'account-teacher',
+    
+        loadChildren: () =>
+          import(
+            './components/views/teacher/teacher-authenticated/teacher-authenticated.module'
+          ).then((m) => m.TeacherAuthenticatedModule),
+      },
+
+      {
+        path: 'contact',
+        canActivateChild: [AuthTeacherGuard],
+        loadChildren: () =>
+          import('./components/views/teacher/contact/contact.module').then(
+            (m) => m.ContactModule
           ),
       },
     ],
