@@ -28,7 +28,7 @@ export class AdminLoginComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [
         Validators.required,
-        Validators.minLength(2)
+        Validators.minLength(2),
       ]),
     };
 
@@ -62,26 +62,35 @@ export class AdminLoginComponent implements OnInit {
     );
     console.log(admin);
 
-    this.adminService.loginAdmin(admin).subscribe(
-      (res) => {
-        console.log(res);
-        this.toast.success({
-          detail: 'Success Message',
-          summary: 'connexion réussie',
-          duration: 5000,
-        });
-        let token = res.token;
-        localStorage.setItem('myToken', token);
+    // test form vide ou non
+    if (data.email == 0 && data.password == 0) {
+      this.toast.error({
+        detail: 'Error Message',
+        summary: 'Rempir votre champs',
+      });
+    } else {
+      // login admin
+      this.adminService.loginAdmin(admin).subscribe(
+        (res) => {
+          console.log(res);
+          this.toast.success({
+            detail: 'Success Message',
+            summary: 'connexion réussie',
+            duration: 5000,
+          });
+          let token = res.token;
+          localStorage.setItem('myToken', token);
 
-        this.router.navigate(['/admin']);
-      },
-      (err) => {
-        console.log(err.Message);
-        this.toast.error({
-          detail: 'Error Message',
-          summary: 'la connexion a échoué, réessayez plus tard',
-        });
-      }
-    );
+          this.router.navigate(['/admin']);
+        },
+        (err) => {
+          console.log(err.Message);
+          this.toast.error({
+            detail: 'Error Message',
+            summary: 'la connexion a échoué, réessayez plus tard',
+          });
+        }
+      );
+    }
   }
 }

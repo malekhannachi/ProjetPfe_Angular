@@ -60,7 +60,13 @@ export class RegisterStudentComponent implements OnInit {
     this.registerForm = this.fb.group(formControls);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    let isLoggedInStudent = this.studentService.isLoggedInStudent();
+    if (isLoggedInStudent) {
+      this.router.navigate(['/student/account-student']);
+    }
+  }
+
   registerStudent() {
     let data = this.registerForm.value;
     console.log(data);
@@ -81,6 +87,7 @@ export class RegisterStudentComponent implements OnInit {
     this.studentService.registerStudent(student).subscribe(
       (result) => {
         console.log(result);
+        this.router.navigate(['teacher/auth-teacher']);
       },
       (error) => {
         console.log(error);

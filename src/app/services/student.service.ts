@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Student } from '../models/student';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root',
@@ -45,5 +46,12 @@ export class StudentService {
     } else {
       return false;
     }
+  }
+
+  saveDataProfil() {
+    const helper = new JwtHelperService();
+    let myRawToken: any = localStorage.getItem('TokenStudent');
+    const decodedToken = helper.decodeToken(myRawToken);
+    return decodedToken.data;
   }
 }

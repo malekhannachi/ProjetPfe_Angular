@@ -1,25 +1,24 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivateChild, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
-import { TeacherService } from '../services/teacher.service';
+import { StudentService } from '../services/student.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthTeacherGuard implements CanActivateChild {
-  constructor(private ts: TeacherService, private route: Router) {}
-
+export class AuthStudentGuard implements CanActivateChild {
+  constructor(private ss: StudentService, private route: Router) {}
   canActivateChild(
     childRoute: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-  
-     
-      if (localStorage.getItem('TokenTeacher')) {
+     let isLoggedInStudent=this.ss.isLoggedInStudent
+      if (isLoggedInStudent()) {
         return true;
       } else {
-        this.route.navigate(['teacher/auth-teacher']);
+        this.route.navigate(['student/auth-student']);
         return false;
       }
   }
+  
   
 }
