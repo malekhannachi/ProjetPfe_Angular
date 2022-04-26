@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Student } from 'src/app/models/student';
 import { StudentService } from 'src/app/services/student.service';
 
 @Component({
@@ -35,16 +36,36 @@ export class ListStudentsComponent implements OnInit {
     );
   }
 
-  updateStudentState(student: any) {
+  updateStudentState(student: Student) {
     console.log(student);
 
-    this.studentService.updateStudent(student).subscribe(
-      (result) => {
-        let index = this.listStudent.indexOf(student);
-        this.listStudent[index].accountState =
-          !this.listStudent[index].accountState;
+    let index=this.listStudent.indexOf(student);
+    if(student.accountState==true)
+    {let newStudent=new Student(student.id_student,student.cin,student.num_ins,student.firstname,student.lastname,student.date,student.lieu_naissance,
+      student.classe,student.groupe,student.nature_bac,student.annee_bac,false)
+  this.studentService.updateStudent(newStudent).subscribe
+  (
+    res=>{console.log(res)
+    this.listStudent[index]=newStudent
+    },
+    err=>console.log(err)
+  )
+    }
+   
+    else{
+
+      let newStudent=new Student(student.id_student,student.cin,student.num_ins,student.firstname,student.lastname,student.date,student.lieu_naissance,
+        student.classe,student.groupe,student.nature_bac,student.annee_bac,true)
+    this.studentService.updateStudent(newStudent).subscribe
+    (
+      res=>{console.log(res)
+      this.listStudent[index]=newStudent
       },
-      (err) => console.log(err)
-    );
+      err=>console.log(err)
+    )
+
+    }
+
+   
   }
 }

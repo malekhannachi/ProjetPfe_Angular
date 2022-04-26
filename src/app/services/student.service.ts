@@ -23,7 +23,7 @@ export class StudentService {
     return this.http.delete<any>(this.deleteStudentUrl + id);
   }
 
-  updateStudent(student: any) {
+  updateStudent(student: Student) {
     return this.http.patch<any>(this.updateStudentUrl, student);
   }
 
