@@ -33,8 +33,8 @@ export class ListNewsComponent implements OnInit {
       (result) => {
         console.log(result);
         this.toast.error({
-          detail: 'Error Message',
-          summary: result.Message,
+          detail: ' Message',
+          summary: 'Actualité est Supprimé',
         });
         let index = this.ListNews.indexOf(news);
         this.ListNews.splice(index, 1);

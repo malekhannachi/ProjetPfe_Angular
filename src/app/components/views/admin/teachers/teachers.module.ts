@@ -5,10 +5,12 @@ import { TeachersRoutingModule } from './teachers-routing.module';
 import { ListTeachersComponent } from './list-teachers/list-teachers.component';
 
 
+
 @NgModule({
   declarations: [
     
-    ListTeachersComponent
+    ListTeachersComponent,
+    
   ],
   imports: [
     CommonModule,

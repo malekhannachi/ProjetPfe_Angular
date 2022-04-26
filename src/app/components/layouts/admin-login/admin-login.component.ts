@@ -63,7 +63,7 @@ export class AdminLoginComponent implements OnInit {
     console.log(admin);
 
     // test form vide ou non
-    if (data.email == 0 && data.password == 0) {
+    if (data.email == 0 || data.password == 0) {
       this.toast.error({
         detail: 'Error Message',
         summary: 'Rempir votre champs',
@@ -87,7 +87,7 @@ export class AdminLoginComponent implements OnInit {
           console.log(err.Message);
           this.toast.error({
             detail: 'Error Message',
-            summary: 'la connexion a échoué, réessayez plus tard',
+            summary: 'la connexion à échoué, Vérfier les donneés',
           });
         }
       );

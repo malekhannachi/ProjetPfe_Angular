@@ -1,13 +1,81 @@
-<form [formGroup]="loginForm" (submit)="loginStudent()">
-    <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" placeholder="Enter email" formControlName="email">
+<div class="body">
+    <div class="content">
+        <div class="container">
+            <div class="row justify-content-center">
+
+                <div class="col-md-6 contents">
+                    <div class="row justify-content-center">
+                        <div class="col-md-12">
+                            <div class="form-block">
+                                <div class="mb-4">
+                                    <h3>Se connecter à <strong>Espace Etudiant</strong></h3>
+                                    <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur
+                                    </p>
+                                </div>
+                                <form [formGroup]="loginForm" (submit)="loginStudent()">
+                                    <div class="form-group first">
+
+                                        <input type="number" class="form-control" formControlName="cin"
+                                            placeholder="Entrer Carte nationale d'identité">
+                                        <div *ngIf="cin?.touched && cin?.invalid">
+                                            <small class="text-danger" *ngIf="cin?.errors?.['required']">cin
+                                                est obligatoire</small>
+                                                <small *ngIf="cin?.errors?.['max']" class="text-danger">
+                                                    Le cin doit comporter au moins 8 caractères.
+                                                </small>
+                                                <small *ngIf="cin?.errors?.['min']" class="text-danger">
+                                                    Le cin doit comporter au moins 8 caractères.
+                                                </small>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group last mb-4">
+
+                                        <input type="password" class="form-control" minlength="8" placeholder="Entrer Mot de Passe"
+                                            formControlName="password">
+                                        <div *ngIf="password?.touched && password?.invalid">
+                                            <small class="text-danger" *ngIf="password?.errors?.['required']">mot de
+                                                passe
+                                                est obligatoire</small>
+                                            <small class="text-danger" *ngIf="password?.errors?.['minlength']">minuim 8
+                                                caractéres
+                                                inccorect</small>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="d-flex mb-5 align-items-center">
+
+                                        <span class="ml-auto"><a href="#" class="forgot-pass">Mot de passe oublié
+                                                ?</a></span>
+                                    </div>
+
+                                    <input type="submit" value="Se connecter"
+                                        class="btn btn-pill text-white btn-block btn-primary">
+
+                                    <span class="d-block text-center my-4 text-muted"> Vous n’avez pas de compte
+                                        ?</span>
+
+                                    <div class="text-center">
+                                        <a href="student/register-student">
+                                            S’inscrire
+                                        </a>
+
+
+
+                                    </div>
+
+
+
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" placeholder="Password" formControlName="password">
-    </div>
-    <div class="form-group form-check">
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+</div>

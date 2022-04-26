@@ -1,166 +1,197 @@
-<div class="container">
-    <div class="row py-5 mt-4 align-items-center">
-        <!-- For Demo Purpose -->
-        <div class="col-md-5 pr-lg-5 mb-5 mb-md-0">
-            <img src="https://bootstrapious.com/i/snippets/sn-registeration/illustration.svg" alt=""
-                class="img-fluid mb-3 d-none d-md-block">
-            <h1>Create an Account</h1>
-            <p class="font-italic text-muted mb-0">Create a minimal registeration page using Bootstrap 4 HTML form
-                elements.</p>
-            <p class="font-italic text-muted">Snippet By <a href="https://bootstrapious.com" class="text-muted">
-                    <u>Bootstrapious</u></a>
-            </p>
-        </div>
+<div class="body">
 
-        <!-- Registeration Form -->
-        <div class="col-md-7 col-lg-6 ml-auto">
-            <form [formGroup]="registerForm" (submit)="registerStudent()">
-                <div class="row">
+    <div class="container">
+        <header>Créer un compte</header>
 
-                    <!-- First Name -->
-                    <div class="input-group col-lg-6 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                <i class="fa fa-user text-muted"></i>
-                            </span>
+        <form [formGroup]="registerForm" (submit)="registerStudent()">
+            <div class="form first">
+                <div class="details personal">
+                    <span class="title">Détails personnels</span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Nom</label>
+                            <input type="text" placeholder="Entrer votre nom" formControlName="lastname">
+                            <div *ngIf="lastname?.invalid && (lastname?.dirty || lastname?.touched)">
+                                <small *ngIf="lastname?.errors?.['required']" class="text-danger">
+                                    Le nom est obligatoire.
+                                </small>
+                                <small *ngIf="lastname?.errors?.['pattern']" class="text-danger">
+                                    Le nom est inccorect
+                                </small>
+                          
+                                <small *ngIf="lastname?.errors?.['minlength']" class="text-danger">
+                                    Le nom doit comporter au moins 4 caractères.
+                                </small>
+                            </div>
                         </div>
-                        <input type="text" placeholder="Prénom" formControlName="firstname"
-                            class="form-control bg-white border-left-0 border-md">
-                    </div>
 
-                    <!-- Last Name -->
-                    <div class="input-group col-lg-6 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                <i class="fa fa-user text-muted"></i>
-                            </span>
+                        <div class="input-field">
+                            <label>Prénom</label>
+                            <input type="text" placeholder="Entrer votre prenom" formControlName="firstname">
+                            <div *ngIf="firstname?.invalid && (firstname?.dirty || firstname?.touched)">
+                                <small *ngIf="firstname?.errors?.['required']" class="text-danger">
+                                    Le prenom est obligatoire.
+                                </small>
+                                <small *ngIf="firstname?.errors?.['pattern']" class="text-danger">
+                                    Le nom est inccorect
+                                </small>
+                                <small *ngIf="firstname?.errors?.['minlength']" class="text-danger">
+                                    Le nom doit comporter au moins 4 caractères.
+                                </small>
+                            </div>
                         </div>
-                        <input type="text" placeholder="Nom " formControlName="lastname"
-                            class="form-control bg-white border-left-0 border-md">
-                    </div>
 
-                    <!-- Cin -->
-                    <div class="input-group col-lg-6 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-
-                            </span>
+                        <div class="input-field">
+                            <label>Date de naissance</label>
+                            <input type="date" placeholder="Entrer le date de naissance" formControlName="date">
+                            <div *ngIf="date?.invalid && (date?.dirty || date?.touched)">
+                                <small *ngIf="date?.errors?.['required']" class="text-danger">
+                                    Date est obligatoire.
+                                </small>
+                            
+                            </div>
                         </div>
-                        <input type="tel" placeholder="Carte d'identité " formControlName="cin"
-                            class="form-control bg-white border-left-0 border-md">
-                    </div>
 
-                    <!-- Numéro d'inscription -->
-                    <div class="input-group col-lg-6 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-
-                            </span>
+                        <div class="input-field">
+                            <label>Lieu de naissance</label>
+                            <input type="text" placeholder="Entrer le lieu de naissance"
+                                formControlName="lieu_naissance">
+                                <div *ngIf="lieu_naissance?.invalid && (lieu_naissance?.dirty || lieu_naissance?.touched)">
+                                    <small *ngIf="lieu_naissance?.errors?.['required']" class="text-danger">
+                                        Lieu de naissance est obligatoire.
+                                    </small>
+                                    <small *ngIf="lieu_naissance?.errors?.['pattern']" class="text-danger">
+                                        Lieu de naissance est inccorect
+                                    </small>
+                                
+                                </div>
                         </div>
-                        <input type="text" placeholder="Numéro d'inscription" formControlName="num_ins"
-                            class="form-control bg-white border-left-0 border-md">
-                    </div>
 
 
-                    <!-- Date de naissance -->
-                    <div class="input-group col-lg-6 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                        <div class="input-field">
+                            <label>Carte d'identité</label>
+                            <input type="text" placeholder="Entrer le Carte d'identité"  formControlName="cin">
+                            <div *ngIf="cin?.invalid && (cin?.dirty || cin?.touched)">
+                                <small *ngIf="cin?.errors?.['required']" class="text-danger">
+                                    Le cin est obligatoire.
+                                </small>
+                                <small *ngIf="cin?.errors?.['max']" class="text-danger">
+                                    Le cin doit comporter au moins 8 caractères.
+                                </small>
+                                <small *ngIf="cin?.errors?.['min']" class="text-danger">
+                                    Le cin doit comporter au moins 8 caractères.
+                                </small>
 
-                            </span>
+                            </div>
                         </div>
-                        <input type="tel" placeholder="Date de naissance " formControlName="date"
-                            class="form-control bg-white border-left-0 border-md">
-                    </div>
 
-                    <!-- Lieu de naissance -->
-                    <div class="input-group col-lg-6 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
 
-                            </span>
+                        <div class="input-field">
+                            <label>Numéro d'inscription</label>
+                            <input type="number"  placeholder="Entrer le numéro d'inscription"
+                                formControlName="num_ins" >
+                            <div *ngIf="num_ins?.invalid && (num_ins?.dirty || num_ins?.touched)">
+                                <small *ngIf="num_ins?.errors?.['required']" class="text-danger">
+                                    Le num est obligatoire.
+                                </small>
+                                <small *ngIf="num_ins?.errors?.['max']" class="text-danger">
+                                    Le num doit comporter au moins 8 caractères.
+                                </small>
+                                <small *ngIf="num_ins?.errors?.['min']" class="text-danger">
+                                    Le num doit comporter au moins 8 caractères.
+                                </small>
+                            </div>
                         </div>
-                        <input type="text" placeholder="Lieu de naissance" formControlName="lieu_naissance"
-                            class="form-control bg-white border-left-0 border-md">
+
+
+
+
                     </div>
-
-                    <!-- Date de naissance -->
-                    <div class="input-group col-lg-6 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-
-                            </span>
-                        </div>
-                        <input type="tel" placeholder="classe " formControlName="classe"
-                            class="form-control bg-white border-left-0 border-md">
-                    </div>
-
-                    <!-- Lieu de naissance -->
-                    <div class="input-group col-lg-6 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-
-                            </span>
-                        </div>
-                        <input type="text" placeholder="groupe" formControlName="groupe"
-                            class="form-control bg-white border-left-0 border-md">
-                    </div>
-                    <!-- Date de naissance -->
-                    <div class="input-group col-lg-12 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-
-                            </span>
-                        </div>
-                        <input type="tel" placeholder="annee_bac " formControlName="annee_bac"
-                            class="form-control bg-white border-left-0 border-md">
-                    </div>
-
-                    <!-- Nature de bac -->
-                    <div class="input-group col-lg-12 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                <i class="fa fa-black-tie text-muted"></i>
-                            </span>
-                        </div>
-                        <select class="form-control custom-select bg-white border-left-0 border-md"
-                            formControlName="nature_bac">
-                            <option value="">Choisir le Nature de bac</option>
-                            <option value="Génie électrique">Génie électrique</option>
-                            <option value="Génie mécanique">Génie mécanique</option>
-                            <option value="Administration des Affaires">Administration des Affaires</option>
-                            <option value="Technologies de l'Informatique">Technologies de l'Informatique</option>
-                        </select>
-                    </div>
-
-
-
-
-
-                    <!-- Submit Button -->
-                    <div class="form-group col-lg-12 mx-auto mb-0">
-                        <button type="submit" class="btn btn-primary btn-block py-2">
-                            <span class="font-weight-bold">Créez votre compte</span>
-                        </button>
-                    </div>
-
-                    <!-- Divider Text -->
-                    <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
-                        <div class="border-bottom w-100 ml-5"></div>
-                        <span class="px-2 small text-muted font-weight-bold text-muted">Ou</span>
-                        <div class="border-bottom w-100 mr-5"></div>
-                    </div>
-
-
-
-                    <!-- Already Registered -->
-                    <div class="text-center w-100">
-                        <p class="text-muted font-weight-bold">Déjà enregistré? <a routerLink="/student/auth-student"
-                                class="text-primary ml-2">Se Connecter</a></p>
-                    </div>
-
                 </div>
-            </form>
-        </div>
+
+                <div class="details ID">
+                    <span class="title">Identity Details</span>
+
+
+
+                    <div class="fields">
+
+
+                        <div class="input-field">
+                            <label>Nature de baccalauréat</label>
+                            <select formControlName="nature_bac">
+                                <option value="" selected hidden>Select Bac</option>
+                                <option>Bac Info</option>
+                                <option>Bac Technique</option>
+                                <option>Bac Science</option>
+                                <option>Bac Economié</option>
+                                <option>Bac Mathe</option>
+                            </select>
+                            <div *ngIf="nature_bac?.invalid && (nature_bac?.dirty || nature_bac?.touched)">
+                                <small *ngIf="nature_bac?.errors?.['required']" class="text-danger">
+                                    Nature de bac est obligatoire.
+                                </small>
+                            
+                            </div>
+                        </div>
+
+
+                        <div class="input-field">
+                            <label>Année de baccalauréat</label>
+                            <input type="number" placeholder="Entrer l'année de baccalauréat" 
+                                formControlName="annee_bac">
+                                <div *ngIf="annee_bac?.invalid && (annee_bac?.dirty || annee_bac?.touched)">
+                                    <small *ngIf="annee_bac?.errors?.['required']" class="text-danger">
+                                        Année de bac est obligatoire.
+                                    </small>
+                                    <small *ngIf="annee_bac?.errors?.['max']" class="text-danger">
+                                        Année de bac entre 2015 et 2021.
+                                    </small>
+                                    <small *ngIf="annee_bac?.errors?.['min']" class="text-danger">
+                                        Année de bac entre 2015 et 2021.
+                                    </small>
+                                
+                                </div>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Classe</label>
+                            <input type="text" placeholder="Enter la Classe" formControlName="classe">
+                            <div *ngIf="classe?.invalid && (classe?.dirty || classe?.touched)">
+                                <small *ngIf="classe?.errors?.['required']" class="text-danger">
+                                    Le classe est obligatoire.
+                                </small>
+                                <small *ngIf="classe?.errors?.['pattern']" class="text-danger">
+                                    Le classe est inccorect.
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Groupe</label>
+                            <input type="text" placeholder="Enter le groupe" formControlName="groupe">
+                            <div *ngIf="groupe?.invalid && (groupe?.dirty || groupe?.touched)">
+                                <small *ngIf="groupe?.errors?.['required']" class="text-danger">
+                                    Le groupe est obligatoire.
+                                </small>
+                                <small *ngIf="groupe?.errors?.['pattern']" class="text-danger">
+                                    Le groupe est inccorect.
+                                </small>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <button class="sumbit">
+                        <span class="btnText">Créer un compte</span>
+                        <i class="uil uil-navigator"></i>
+                    </button>
+                </div>
+            </div>
+
+
+        </form>
     </div>
 </div>

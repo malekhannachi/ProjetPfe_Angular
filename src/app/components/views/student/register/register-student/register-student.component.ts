@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 import { Student } from 'src/app/models/student';
 import { StudentService } from 'src/app/services/student.service';
 
@@ -19,45 +20,81 @@ export class RegisterStudentComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private studentService: StudentService,
-    private router: Router
+    private router: Router,
+    private toast: NgToastService
   ) {
     let formControls = {
       firstname: new FormControl('', [
         Validators.required,
-        Validators.minLength(8),
+        Validators.minLength(4),
+        Validators.pattern("[a-zA-Z .'-]+"),
       ]),
       lastname: new FormControl('', [
         Validators.required,
-        Validators.minLength(8),
+        Validators.minLength(4),
+        Validators.pattern("[a-zA-Z']+"),
       ]),
-      cin: new FormControl('', [Validators.required, Validators.minLength(8)]),
+      cin: new FormControl('', [
+        Validators.required,
+        Validators.min(10000000),
+        Validators.max(99999999),
+      ]),
       num_ins: new FormControl('', [
         Validators.required,
-        Validators.minLength(8),
+        Validators.min(10000000),
+        Validators.max(99999999),
       ]),
-      date: new FormControl('', [Validators.required, Validators.minLength(8)]),
+      date: new FormControl('', [Validators.required]),
       lieu_naissance: new FormControl('', [
         Validators.required,
-        Validators.minLength(8),
+        Validators.pattern("[a-zA-Z'-]+"),
       ]),
       classe: new FormControl('', [
         Validators.required,
-        Validators.minLength(8),
+        Validators.pattern("[a-zA-Z'-]+"),
       ]),
       groupe: new FormControl('', [
         Validators.required,
-        Validators.minLength(8),
+        Validators.pattern("[a-zA-Z0-9'-]+"),
       ]),
-      nature_bac: new FormControl('', [
-        Validators.required,
-        Validators.minLength(8),
-      ]),
+      nature_bac: new FormControl('', [Validators.required]),
       annee_bac: new FormControl('', [
         Validators.required,
-        Validators.minLength(8),
+        Validators.max(2021),
+        Validators.min(2015),
       ]),
     };
     this.registerForm = this.fb.group(formControls);
+  }
+  get firstname() {
+    return this.registerForm.get('firstname');
+  }
+  get lastname() {
+    return this.registerForm.get('lastname');
+  }
+  get cin() {
+    return this.registerForm.get('cin');
+  }
+  get num_ins() {
+    return this.registerForm.get('num_ins');
+  }
+  get lieu_naissance() {
+    return this.registerForm.get('lieu_naissance');
+  }
+  get date() {
+    return this.registerForm.get('date');
+  }
+  get classe() {
+    return this.registerForm.get('classe');
+  }
+  get groupe() {
+    return this.registerForm.get('groupe');
+  }
+  get nature_bac() {
+    return this.registerForm.get('nature_bac');
+  }
+  get annee_bac() {
+    return this.registerForm.get('annee_bac');
   }
 
   ngOnInit(): void {
@@ -84,14 +121,33 @@ export class RegisterStudentComponent implements OnInit {
       data.annee_bac
     );
     console.log(student);
-    this.studentService.registerStudent(student).subscribe(
-      (result) => {
-        console.log(result);
-        this.router.navigate(['teacher/auth-teacher']);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    if (
+      data.cin == 0 ||
+      data.num_ins == 0 ||
+      data.firstname == 0 ||
+      data.lastname == 0 ||
+      data.date == 0 ||
+      data.lieu_naissance == 0 ||
+      data.annee_bac == 0 ||
+      data.nature_bac == 0 ||
+      data.class == 0 ||
+      data.group == 0
+    ) {
+      this.toast.error({
+        detail: 'Error Message',
+        summary: 'Rempir votre champs',
+        duration: 2000,
+      });
+    } else {
+      this.studentService.registerStudent(student).subscribe(
+        (result) => {
+          console.log(result);
+          this.router.navigate(['student/auth-student']);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    }
   }
 }

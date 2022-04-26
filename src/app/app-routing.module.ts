@@ -107,14 +107,7 @@ const routes: Routes = [
           ).then((m) => m.TeacherAuthenticatedModule),
       },
 
-      {
-        path: 'contact',
-        canActivateChild: [AuthTeacherGuard],
-        loadChildren: () =>
-          import('./components/views/teacher/contact/contact.module').then(
-            (m) => m.ContactModule
-          ),
-      },
+    
     ],
   },
   { path: 'auth-admin', component: AdminLoginComponent },
@@ -149,6 +142,13 @@ const routes: Routes = [
         loadChildren: () =>
           import('./components/views/admin/teachers/teachers.module').then(
             (m) => m.TeachersModule
+          ),
+      },
+      {
+        path: 'list-contact',
+        loadChildren: () =>
+          import('./components/views/admin/contact-admin/contact-admin.module').then(
+            (m) => m.ContactAdminModule
           ),
       },
       {

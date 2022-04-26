@@ -22,10 +22,24 @@ export class AuthStudentComponent implements OnInit {
     private route: Router
   ) {
     let formControlls = {
-      email: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required]),
+      cin: new FormControl('', [
+        Validators.required,
+        Validators.min(10000000),
+        Validators.max(99999999),
+      ]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(8),
+      ]),
     };
     this.loginForm = this.fb.group(formControlls);
+  }
+
+  get cin() {
+    return this.loginForm.get('cin');
+  }
+  get password() {
+    return this.loginForm.get('password');
   }
 
   ngOnInit(): void {
@@ -38,18 +52,24 @@ export class AuthStudentComponent implements OnInit {
   loginStudent() {
     let data = this.loginForm.value;
     console.log(data);
-    let student = new Student(undefined, data.email, data.password);
+    let student = new Student(undefined, data.cin, data.password);
     console.log(student);
-    this.studentService.loginStudent(student).subscribe(
-      (result) => {
-        console.log(result);
-        let token = result.token;
-        localStorage.setItem('TokenStudent', token);
-        this.route.navigate(['student/account-student']);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+
+    if (data.cin == 0 || data.password == 0) {
+      alert('Remplir Votre champs');
+    } else {
+      this.studentService.loginStudent(student).subscribe(
+        (result) => {
+          console.log(result);
+          let token = result.token;
+          localStorage.setItem('TokenStudent', token);
+          this.route.navigate(['student/account-student']);
+        },
+        (error) => {
+          console.log(error);
+          alert('Connection à echoué');
+        }
+      );
+    }
   }
 }

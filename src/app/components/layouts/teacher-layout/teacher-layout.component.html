@@ -13,23 +13,20 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">Link</a>
             </li>
-
-            <li class="nav-item">
-                <a class="nav-link disabled">Disabled</a>
-            </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
 
-            <a *ngIf="!isLoggedTeacher" class="btn btn-primary my-2 my-sm-0" type="submit"
-                routerLink="register-teacher">register</a>
-            <a *ngIf="!isLoggedTeacher" class="btn btn-info my-2 mx-3" type="submit" routerLink="auth-teacher">login</a>
-            <a *ngIf="isLoggedTeacher" class="btn btn-info my-2 mx-3" type="submit" href="">
+            <a *ngIf="!ts.isLoggedInTeacher()" class="btn btn-primary my-2 my-sm-0" type="submit"
+                routerLink="register-teacher">S’inscrire</a>
+            <a *ngIf="!ts.isLoggedInTeacher()" class="btn btn-info my-2 mx-3" type="submit" routerLink="auth-teacher">Se
+                connecter</a>
+            <a *ngIf="ts.isLoggedInTeacher()r" class="btn btn-info my-2 mx-3" type="submit" href="">
                 <i class="bi bi-person-circle"></i>
-                {{teacherData.firstname}} {{teacherData.lastname}}
+                {{ts.saveDataProfil().firstname}}   {{ts.saveDataProfil().lastname}}
             </a>
-            <button *ngIf="isLoggedTeacher" class="btn btn-danger my-2 mx-3" type="submit" (click)="logout()">
+            <button *ngIf="ts.isLoggedInTeacher()" class="btn btn-danger my-2 mx-3" type="submit" (click)="logout()">
                 <i class="bi bi-box-arrow-in-right"></i>
-                Se déconnecter
+                Déconnexion
 
             </button>
 
