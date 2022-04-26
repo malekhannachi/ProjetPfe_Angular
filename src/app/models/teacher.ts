@@ -9,6 +9,7 @@ export class Teacher {
     public email?: String,
     public rib?: String,
     public grade?: String,
-    public departement?: String
+    public departement?: String,
+    public accountState?:Boolean
   ) {}
 }
