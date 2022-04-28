@@ -42,12 +42,14 @@
 
                 <div class="form-group">
                     <label for="photo" id="photo">Image : </label>
-                    <input type="file" class="form-control-file" formControlName="image">
+                    <input type="file" class="form-control-file" formControlName="image" accept="image/*" (change)="onSelectFile($event)"> 
                     <div *ngIf="image?.touched && image?.invalid">
                         <small class="text-danger" *ngIf="image?.errors?.['required']">image
                             est obligatoire</small>
 
                     </div>
+                    <br>
+                    <img [src]="imgURL" height="200" *ngIf="imgURL">
                 </div>
                 <button class="btn btn-sm btn-warning mt-3" [disabled]="updateForm.invalid">Modifier</button>
             </form>

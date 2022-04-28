@@ -17,6 +17,11 @@ import { NewsService } from 'src/app/services/news.service';
 export class AddNewsComponent implements OnInit {
   addForm: FormGroup;
 
+  userFile: any ;
+  public imagePath: any;
+  imgURL: any;
+  public message!: string ;
+
   constructor(
     private fb: FormBuilder,
     private newsService: NewsService,
@@ -52,7 +57,7 @@ export class AddNewsComponent implements OnInit {
 
   addNews() {
     let data = this.addForm.value;
-    let news = new News(undefined, data.titre, data.description, data.image);
+    let news = new News(undefined, data.titre, data.description, this.imgURL);
     console.log(news);
     console.log(data);
     this.newsService.addNews(news).subscribe(
@@ -65,4 +70,37 @@ export class AddNewsComponent implements OnInit {
       }
     );
   }
+
+
+
+  onSelectFile(event:any) {
+    if (event.target.files.length > 0)
+    {
+      const file = event.target.files[0];
+      this.userFile = file;
+     // this.f['profile'].setValue(file);
+ 
+    var mimeType = event.target.files[0].type;
+    if (mimeType.match(/image\/*/) == null) {
+      this.message = "Only images are supported.";
+      return;
+    }
+ 
+    var reader = new FileReader();
+    
+    this.imagePath = file;
+    reader.readAsDataURL(file); 
+    reader.onload = (_event) => { 
+      this.imgURL = reader.result; 
+    }
+  }
+     
+      
+    }
+    
+
+
+
+
+
 }

@@ -9,17 +9,24 @@ import { NewsService } from 'src/app/services/news.service';
 })
 export class ListNewsComponent implements OnInit {
   ListNews: any[] = [];
+   
+  imgURL: any[] =[];
 
   constructor(
     private newsService: NewsService,
     private toast: NgToastService
   ) {}
+  
 
   ngOnInit(): void {
     this.newsService.getAllNews().subscribe(
       (res) => {
         this.ListNews = res;
+     
+     
+        
 
+        
         console.log(res);
       },
       (err) => {
@@ -35,6 +42,7 @@ export class ListNewsComponent implements OnInit {
         this.toast.error({
           detail: ' Message',
           summary: 'Actualité est Supprimé',
+          duration: 2000,
         });
         let index = this.ListNews.indexOf(news);
         this.ListNews.splice(index, 1);
@@ -45,3 +53,5 @@ export class ListNewsComponent implements OnInit {
     );
   }
 }
+
+
