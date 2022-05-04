@@ -7,6 +7,7 @@ import { TeacherLayoutComponent } from './teacher-layout/teacher-layout.componen
 import { RouterModule } from '@angular/router';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PageInvalidComponent } from './page-invalid/page-invalid.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     StudentLayoutComponent,
     TeacherLayoutComponent,
     AdminLoginComponent,
+    PageInvalidComponent,
   ],
   imports: [CommonModule, RouterModule,FormsModule,ReactiveFormsModule],
 })

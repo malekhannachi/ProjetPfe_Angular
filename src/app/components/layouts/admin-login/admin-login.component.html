@@ -32,7 +32,7 @@
                                                 aria-describedby="emailHelp" placeholder="Enter Email Address..."
                                                 formControlName="email">
                                             <div *ngIf="email?.touched && email?.invalid">
-                                                <small class="text-danger" *ngIf="email?.errors?.['required']">e-mail
+                                                <small class="text-danger" *ngIf=" email?.errors?.['required']">e-mail
                                                     est obligatoire</small>
                                                 <small class="text-danger" *ngIf="email?.errors?.['email']">e-mail est
                                                     inccorect</small>

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminLayoutComponent } from './components/layouts/admin-layout/admin-layout.component';
 import { AdminLoginComponent } from './components/layouts/admin-login/admin-login.component';
 import { FrontLayoutComponent } from './components/layouts/front-layout/front-layout.component';
+import { PageInvalidComponent } from './components/layouts/page-invalid/page-invalid.component';
 import { StudentLayoutComponent } from './components/layouts/student-layout/student-layout.component';
 import { TeacherLayoutComponent } from './components/layouts/teacher-layout/teacher-layout.component';
 import { AuthAdminGuard } from './guards/auth-admin.guard';
@@ -166,7 +167,7 @@ const routes: Routes = [
           ),
       },
     ],
-  },
+  }, { path: '**', component: PageInvalidComponent },
 ];
 
 @NgModule({

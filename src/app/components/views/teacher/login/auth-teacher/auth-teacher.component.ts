@@ -23,7 +23,7 @@ export class AuthTeacherComponent implements OnInit {
     private router: Router
   ) {
     let formControls = {
-      email: new FormControl('', [Validators.required, Validators.email]),
+      cin: new FormControl('', [Validators.required, Validators.max(99999999),Validators.min(10000000)]),
       password: new FormControl('', [
         Validators.required,
         Validators.minLength(8),
@@ -31,6 +31,13 @@ export class AuthTeacherComponent implements OnInit {
     };
 
     this.loginForm = this.fb.group(formControls);
+  }
+
+  get cin() {
+    return this.loginForm.get('cin');
+  }
+  get password() {
+    return this.loginForm.get('password');
   }
 
   ngOnInit(): void {
@@ -44,7 +51,7 @@ export class AuthTeacherComponent implements OnInit {
     let data = this.loginForm.value;
     let teacher = new Teacher(
       undefined,
-      data.email,
+      data.cin,
       undefined,
       undefined,
       undefined,
@@ -55,12 +62,19 @@ export class AuthTeacherComponent implements OnInit {
       undefined
     );
     console.log(data);
+    console.log(teacher);
+    
+    if (data.cin == 0 || data.password == 0) {
+      alert('Remplir Votre champs');
+    } else {
     this.teacherService.loginTeacher(teacher).subscribe(
       (res) => {
         console.log(res);
 
         let token = res.token;
         localStorage.setItem('TokenTeacher', token);
+
+        
 
         this.router.navigate(['teacher/account-teacher']);
       },
@@ -69,4 +83,5 @@ export class AuthTeacherComponent implements OnInit {
       }
     );
   }
+}
 }

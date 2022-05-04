@@ -1,153 +1,159 @@
-<div class="container">
-    <div class="row py-5 mt-4 align-items-center">
-        <!-- For Demo Purpose -->
-        <div class="col-md-5 pr-lg-5 mb-5 mb-md-0">
-            <img src="https://bootstrapious.com/i/snippets/sn-registeration/illustration.svg" alt=""
-                class="img-fluid mb-3 d-none d-md-block">
-            <h1>Create an Account</h1>
-            <p class="font-italic text-muted mb-0">Create a minimal registeration page using Bootstrap 4 HTML form
-                elements.</p>
-            <p class="font-italic text-muted">Snippet By <a href="https://bootstrapious.com" class="text-muted">
-                    <u>Bootstrapious</u></a>
-            </p>
-        </div>
+<div class="body">
 
-        <!-- Registeration Form -->
-        <div class="col-md-7 col-lg-6 ml-auto">
-            <form [formGroup]="registerForm" (submit)="registerTeacher()">
-                <div class="row">
+    <div class="container">
+        <header>Créer un compte</header>
 
-                    <!-- First Name -->
-                    <div class="input-group col-lg-6 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                <i class="fa fa-user text-muted"></i>
-                            </span>
+        <form [formGroup]="registerForm" (submit)="registerTeacher()">
+            <div class="form first">
+                <div class="details personal">
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Nom</label>
+                            <input type="text" placeholder="Entrer votre nom" formControlName="lastname">
+                            <div *ngIf="lastname?.invalid && (lastname?.dirty || lastname?.touched)">
+                                <small *ngIf="lastname?.errors?.['required']" class="text-danger">
+                                    Le nom est obligatoire.
+                                </small>
+                                <small *ngIf="lastname?.errors?.['pattern']" class="text-danger">
+                                    Le nom est inccorect
+                                </small>
+                          
+                                <small *ngIf="lastname?.errors?.['minlength']" class="text-danger">
+                                    Le nom doit comporter au moins 4 caractères.
+                                </small>
+                            </div>
                         </div>
-                        <input type="text" placeholder="Prénom" formControlName="firstname"
-                            class="form-control bg-white border-left-0 border-md">
-                    </div>
 
-                    <!-- Last Name -->
-                    <div class="input-group col-lg-6 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                <i class="fa fa-user text-muted"></i>
-                            </span>
+                        <div class="input-field">
+                            <label>Prénom</label>
+                            <input type="text" placeholder="Entrer votre prenom" formControlName="firstname">
+                            <div *ngIf="firstname?.invalid && (firstname?.dirty || firstname?.touched)">
+                                <small *ngIf="firstname?.errors?.['required']" class="text-danger">
+                                    Le prenom est obligatoire.
+                                </small>
+                                <small *ngIf="firstname?.errors?.['pattern']" class="text-danger">
+                                    Le nom est inccorect
+                                </small>
+                                <small *ngIf="firstname?.errors?.['minlength']" class="text-danger">
+                                    Le nom doit comporter au moins 4 caractères.
+                                </small>
+                            </div>
                         </div>
-                        <input type="text" placeholder="Nom " formControlName="lastname"
-                            class="form-control bg-white border-left-0 border-md">
-                    </div>
 
-                    <!-- Email Address -->
-                    <div class="input-group col-lg-12 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                <i class="fa fa-envelope text-muted"></i>
-                            </span>
+                        <div class="input-field">
+                            <label>Adresse email</label>
+                            <input type="text" placeholder="Entrer l'adresse email" formControlName="email">
+                            <div *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+                                <small *ngIf="email?.errors?.['required']" class="text-danger">
+                                     email est obligatoire.
+                                </small>
+                                <small *ngIf="email?.errors?.['email']" class="text-danger">
+                                    email est inccorect.
+                                </small>
+                             
+                            </div>
                         </div>
-                        <input type="email" placeholder="Addresse Email" formControlName="email"
-                            class="form-control bg-white border-left-0 border-md">
-                    </div>
 
-                    <div class="input-group col-lg-12 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                <i class="fa fa-phone-square text-muted"></i>
-                            </span>
+                        <div class="input-field">
+                            <label>Numéro de téléphone</label>
+                            <input type="number" placeholder="Entrer le numéro de téléphone" formControlName="num_tel">
+                            <div *ngIf="num_tel?.invalid && (num_tel?.dirty || num_tel?.touched)">
+                                <small *ngIf="num_tel?.errors?.['required']" class="text-danger">
+                                le numéro de téléphone est obligatoire.
+                                </small>
+                                <small *ngIf="num_tel?.errors?.['max']" class="text-danger">
+                                    le numéro de téléphone doit comporter au moins 8 caractères.
+                                </small>
+                                <small *ngIf="num_tel?.errors?.['min']" class="text-danger">
+                                    le numéro de téléphone doit comporter au moins 8 caractères.
+                                </small>
+
+                            </div>
                         </div>
-                        <input type="tel" placeholder="numéro de téléphone" formControlName="num_tel"
-                            class="form-control bg-white border-md border-left-0 pl-3">
-                    </div>
 
 
+                        <div class="input-field">
+                            <label>Carte d'identité</label>
+                            <input type="text" placeholder="Entrer le Carte d'identité" formControlName="cin">
+                            <div *ngIf="cin?.invalid && (cin?.dirty || cin?.touched)">
+                                <small *ngIf="cin?.errors?.['required']" class="text-danger">
+                                    Le cin est obligatoire.
+                                </small>
+                                <small *ngIf="cin?.errors?.['max']" class="text-danger">
+                                    Le cin doit comporter au moins 8 caractères.
+                                </small>
+                                <small *ngIf="cin?.errors?.['min']" class="text-danger">
+                                    Le cin doit comporter au moins 8 caractères.
+                                </small>
 
-                    <!-- Cin -->
-                    <div class="input-group col-lg-6 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-
-                            </span>
+                            </div>
                         </div>
-                        <input type="tel" placeholder="Carte d'identité " formControlName="cin"
-                            class="form-control bg-white border-left-0 border-md">
-                    </div>
 
-                    <!-- Matricule -->
-                    <div class="input-group col-lg-6 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
 
-                            </span>
+                        <div class="input-field">
+                            <label>Numéro de Matricule</label>
+                            <input type="number" placeholder="Entrer le numéro de matricule"
+                                formControlName="matricule">
+
                         </div>
-                        <input type="text" placeholder="Matricule" formControlName="matricule"
-                            class="form-control bg-white border-left-0 border-md">
+
+
+
+
                     </div>
-
-                    <!-- departement -->
-                    <div class="input-group col-lg-12 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                <i class="fa fa-black-tie text-muted"></i>
-                            </span>
-                        </div>
-                        <select class="form-control custom-select bg-white border-left-0 border-md"
-                            formControlName="departement">
-                            <option value="">Choisir un département</option>
-                            <option value="Génie électrique">Génie électrique</option>
-                            <option value="Génie mécanique">Génie mécanique</option>
-                            <option value="Administration des Affaires">Administration des Affaires</option>
-                            <option value="Technologies de l'Informatique">Technologies de l'Informatique</option>
-                        </select>
-                    </div>
-                    <!-- Grade -->
-                    <div class="input-group col-lg-6 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-
-                            </span>
-                        </div>
-                        <input id="passwordConfirmation" type="text" placeholder="Grade" formControlName="grade"
-                            class="form-control bg-white border-left-0 border-md">
-                    </div>
-
-                    <!-- RIB -->
-                    <div class="input-group col-lg-6 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-
-                            </span>
-                        </div>
-                        <input type="text" placeholder="rib" class="form-control bg-white border-left-0 border-md"
-                            formControlName="rib">
-                    </div>
-
-
-
-                    <!-- Submit Button -->
-                    <div class="form-group col-lg-12 mx-auto mb-0">
-                        <button type="submit" class="btn btn-primary btn-block py-2" >
-                            <span class="font-weight-bold">Créez votre compte</span>
-                        </button>
-                    </div>
-
-                    <!-- Divider Text -->
-                    <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
-                        <div class="border-bottom w-100 ml-5"></div>
-                        <span class="px-2 small text-muted font-weight-bold text-muted">Ou</span>
-                        <div class="border-bottom w-100 mr-5"></div>
-                    </div>
-
-
-
-                    <!-- Already Registered -->
-                    <div class="text-center w-100">
-                        <p class="text-muted font-weight-bold">Déjà enregistré? <a routerLink="/teacher/auth-teacher"
-                                class="text-primary ml-2">se Connecter</a></p>
-                    </div>
-
                 </div>
-            </form>
-        </div>
+
+                <div class="details ID">
+
+
+
+                    <div class="fields">
+
+
+                        <div class="input-field">
+                            <label>Département</label>
+                            <select formControlName="departement">
+                                <option value="" selected hidden>Choisir un département</option>
+
+                                <option>Génie électrique</option>
+                                <option>Génie mécanique</option>
+                                <option>Administration des Affaires</option>
+                                <option>Technologies de l'Informatique</option>
+                            </select>
+                            <div *ngIf="departement?.invalid && (departement?.dirty || departement?.touched)">
+                                <small *ngIf="departement?.errors?.['required']" class="text-danger">
+                                    Choisir un département
+                                </small>
+                            
+                            </div>
+                        </div>
+
+
+                        <div class="input-field">
+                            <label>Grade</label>
+                            <input type="text" placeholder="Enter la grade" formControlName="grade">
+
+                        </div>
+                        <div class="input-field">
+                            <label>RIB</label>
+                            <input type="number" placeholder="Entrer le RIB" formControlName="rib">
+                        </div>
+
+
+
+
+
+
+                    </div>
+
+                    <button class="sumbit">
+                        <span class="btnText">Créer un compte</span>
+                        <i class="uil uil-navigator"></i>
+                    </button>
+                </div>
+            </div>
+
+
+        </form>
     </div>
 </div>

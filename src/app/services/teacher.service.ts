@@ -18,8 +18,8 @@ export class TeacherService {
 
   constructor(private http: HttpClient, private route: Router) {}
 
-  getAllTeachers(): Observable<Object> {
-    return this.http.get<Object>(this.getAllTeachersUrl);
+  getAllTeachers(): Observable<Teacher> {
+    return this.http.get<Teacher>(this.getAllTeachersUrl);
   }
   deleteTeacher(id: Number) {
     return this.http.delete<any>(this.deleteTeacherUrl + id);
