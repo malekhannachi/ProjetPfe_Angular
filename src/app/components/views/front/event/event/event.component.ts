@@ -7,21 +7,11 @@ import { NewsService } from 'src/app/services/news.service';
   styleUrls: ['./event.component.css']
 })
 export class EventComponent implements OnInit {
-  ListNews: any[] = [];
-  imgURL: any[] =[];
-  constructor(private newsService: NewsService) {}
+
+  constructor() {}
 
   ngOnInit(): void {
-    this.newsService.getAllNews().subscribe(
-      (res) => {
-        this.ListNews = res;
 
-        console.log(res);
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
   }
 
 }
