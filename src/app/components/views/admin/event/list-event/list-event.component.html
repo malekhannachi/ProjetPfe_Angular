@@ -1,0 +1,60 @@
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Gestion des actualités</h1>
+    </div>
+    <div>
+        <a routerLink="/admin/news/add-news" class="btn btn-sm btn-info mb-2">Ajouter une actualité</a>
+    </div>
+
+</div>
+<div class="col ml-2">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary"> Liste des actualités</h6>
+        </div>
+
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Image </th>
+                        <th>Titre</th>
+                        <th>Description</th>
+                        <th>Place</th>
+                        <th>Heure</th>
+                        <th>Date</th>
+                        <th>#</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of ListEvent;let i = index">
+                        <td class="align-middle">{{i+1}}</td>
+                        <td>
+                            <img [src]="item.imageUrl" height="150" > </td>
+                        <td class="align-middle">{{item.titre}}</td>
+                        <td class="align-middle">{{item.description}}</td>
+                        <td class="align-middle">{{item.titre}}</td>
+                        <td class="align-middle">{{item.description}}</td>
+                        <td class="align-middle">{{item.date}}</td>
+                    
+                        <td class="align-middle">
+                            <a routerLink="/admin/news/update-news/{{item.id}}" class="btn btn-sm btn-warning mx-2">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <button class="btn btn-sm btn-danger" (click)="deleteEvent(item)">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <div *ngIf="ListEvent.length == 0" class="alert alert-warning">Aucun évenment trouvé</div>
+
+        </div>
+    </div>
+</div>

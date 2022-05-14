@@ -218,6 +218,21 @@ const routes: Routes = [
             (m) => m.NewsModule
           ),
       },
+      {
+        path: 'event',
+        loadChildren: () =>
+          import('./components/views/admin/event/event.module').then(
+            (m) => m.EventModule
+          ),
+      },
+      {
+        path: '',
+        loadChildren: () =>
+          import('./components/views/admin/event/event.module').then(
+            (m) => m.EventModule
+          ),
+      },
+      
     ],
   }, { path: '**', component: PageInvalidComponent },
 ];

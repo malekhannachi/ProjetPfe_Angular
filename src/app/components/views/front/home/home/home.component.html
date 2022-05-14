@@ -47,7 +47,8 @@
         <div class="card">
         <div class="card-body search">
         <div class="input-group m-b-0">
-        <input type="text" class="form-control" placeholder="Search...">
+        <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="titre" (input)="filterByName(titre)">
+      
         </div>
         </div>
         </div>
@@ -105,7 +106,7 @@
         </div>
         <div class="card">
         <div class="header">
-        <h2><strong>Email</strong> Newsletter <small>Get our products/news earlier than others, let’s get in touch.</small></h2>
+        <h2><strong>Email</strong> Newsletter <small>Get our products/news earlier than others, let's get in touch.</small></h2>
         </div>
         <div class="card-body widget newsletter">
         <div class="input-group">
