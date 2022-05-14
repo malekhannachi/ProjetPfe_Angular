@@ -29,13 +29,13 @@ export class AddEventComponent implements OnInit {
     let formControles = {
       titre: new FormControl('', [
         Validators.required,
-        Validators.pattern("[a-z .'-]+"),
-        Validators.minLength(4),
+        Validators.pattern("[a-z A-Z .'-]+"),
+        Validators.minLength(3),
       ]),
       description: new FormControl('', [
         Validators.required,
-        Validators.pattern("[a-z 0-9 A-Z .'-]+"),
-        Validators.maxLength(100),
+        Validators.pattern("[a-z 0-9 A-Z . ,'-]+"),
+        Validators.maxLength(200),
       ]),
       image: new FormControl('', [Validators.required]),
       palace: new FormControl('', [
@@ -78,7 +78,7 @@ export class AddEventComponent implements OnInit {
       data.titre,
       data.description,
       data.palace,
-      data.heure,
+      data.time,
       data.date,
       this.imgURL
     );

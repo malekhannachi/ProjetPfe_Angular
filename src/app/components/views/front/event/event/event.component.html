@@ -1,0 +1,36 @@
+<section id="hero">
+    <div class="inner-banner" style="background-image:url(assets/images/banner-event.jpg)">
+    <div class="container">
+    <h3 class="title">Layout<br><strong>Event</strong></h3>
+    </div>
+    </div>
+    </section>
+    
+    <section class="main-section">
+    
+    <div class="event-section section-65-50">
+    <div class="container">
+    <div class="row clearfix">
+    <ul class="list-unstyled event-list col-12">
+    <li class="event-box" *ngFor="let item of ListEvent">
+    <div class="event-img">
+    <img [src]="item.imageUrl" alt="" width="400px">
+    </div>
+    <div class="event-dep">
+    <ul class="list-unstyled clearfix event-time-date">
+    <li class="float-left"><i class="zmdi zmdi-time"></i> <span>{{item.time}}</span></li>
+    <li class="float-left"><i class="zmdi zmdi-pin"></i> <span>{{item.place}}</span></li>
+    <li class="float-left"><i class="zmdi zmdi-calendar"></i> <span>{{item.date}}</span></li>
+    </ul>
+    <h2 class="event-name">{{item.titre}}</h2>
+    <p>{{item.description}}</p>
+    <a class="btn btn-round btn-simple" href="javascript:void(0);">Viem More</a>
+    </div>
+    </li>
+ 
+    </ul>
+    </div>
+    </div>
+    </div>
+    
+    </section>

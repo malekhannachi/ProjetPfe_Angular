@@ -5,7 +5,7 @@ export class Event {
         public titre?: String,
         public description?: String,
         public place?: String,
-        public heure?: String,
+        public time?: String,
         public date?: Date,
         public imageUrl?: String
 
