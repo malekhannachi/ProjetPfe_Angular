@@ -1,1 +1,91 @@
-<p>update-event works!</p>
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Modifier un évenment</h1>
+    </div>
+
+</div>
+<div class="col">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h6 class="m-0 font-weight-bold text-warning">modifier un évenment </h6>
+        </div>
+
+        <div class="card-body">
+            <form [formGroup]="addForm" (ngSubmit)="updateEvent()">
+                <div class="form-group">
+                    <label for="titre" id="titre">Titre : </label>
+                    <input type="text" class="form-control" formControlName="titre">
+                    <div *ngIf="titre?.touched && titre?.invalid">
+                        <small class="text-danger" *ngIf="titre?.errors?.['required']">champ
+                            est obligatoire</small>
+                        <small class="text-danger" *ngIf="titre?.errors?.['pattern']">champ est
+                            inccorect</small>
+                        <small class="text-danger" *ngIf="titre?.errors?.['minLength']">minuim 4 caractéres
+                        </small>
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="description" id="description">Description : </label>
+                    <input type="text" class="form-control" formControlName="description">
+                    <div *ngIf="description?.touched && description?.invalid">
+                        <small class="text-danger" *ngIf="description?.errors?.['required']">champ
+                            est obligatoire</small>
+                        <small class="text-danger" *ngIf="description?.errors?.['pattern']">champ est
+                            inccorect</small>
+                        <small class="text-danger" *ngIf="description?.errors?.['maxLength']">max 30 caractéres
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="description" id="description">Palace : </label>
+                    <input type="text" class="form-control" formControlName="description">
+
+                </div>
+
+                <div class="form-group">
+                    <label for="description" id="description">Date de évenment : </label>
+                    <input type="date" class="form-control" formControlName="description">
+
+                </div>
+
+                <div class="form-group">
+                    <label for="description" id="description">Heure de évenment : </label>
+                    <select class="custom-select">
+                        <option selected="" hidden>Choisir heure</option>
+                        <option>8:00 - 9:00</option>
+                        <option>9:00 - 10:00</option>
+                        <option>10:00 - 11:00</option>
+                        <option>11:00 - 12:00</option>
+                        <option>13:00 - 14:00</option>
+                        <option>14:00 - 15:00</option>
+                        <option>15:00 - 16:00</option>
+                        <option>16:00 - 17:00</option>
+                        <option>17:00 - 18:00</option>
+
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="photo" id="photo">Image : </label>
+                    <input type="file" class="form-control-file" formControlName="image" accept="image/*"
+                        (change)="onSelectFile($event)">
+                    <div *ngIf="image?.touched && image?.invalid">
+                        <small class="text-danger" *ngIf="image?.errors?.['required']">image
+                            est obligatoire</small>
+                    </div>
+                    <br>
+                    <img [src]="imgURL" height="200" *ngIf="imgURL">
+                </div>
+
+
+
+                <button type="submit" class="btn btn-sm btn-warning mt-3" [disabled]="addForm.invalid">Modifier</button>
+            </form>
+        </div>
+    </div>
+</div>
