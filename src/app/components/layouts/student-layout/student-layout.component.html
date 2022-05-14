@@ -22,7 +22,8 @@
 
             <a *ngIf="!studentSerive.isLoggedInStudent()" class="btn btn-primary my-2 my-sm-0" type="submit"
                 routerLink="register-student">S’inscrire</a>
-            <a *ngIf="!studentSerive.isLoggedInStudent()" class="btn btn-info my-2 mx-3" type="submit" routerLink="auth-student">Se
+            <a *ngIf="!studentSerive.isLoggedInStudent()" class="btn btn-info my-2 mx-3" type="submit"
+                routerLink="auth-student">Se
                 connecter</a>
 
 
@@ -32,21 +33,21 @@
                 <li class="nav-item">
                     <button class="btn btn-info dropdown-toggle" href="#" id="userDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="bi bi-person-circle"></i> 
-                        <span class="mr-2 d-none d-lg-inline text-black-800 ">  Compte</span>
+                        <i class="bi bi-person-circle"></i>
+                        <span class="mr-2 d-none d-lg-inline text-black-800 "> Compte</span>
                     </button>
                     <!-- Dropdown - User Information -->
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                         aria-labelledby="userDropdown">
                         <span class="dropdown-item">
 
-                            {{studentSerive.saveDataProfil().firstname}}   {{studentSerive.saveDataProfil().lastname}} 
+                            {{studentSerive.saveDataProfil().firstname}} {{studentSerive.saveDataProfil().lastname}}
                         </span>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">
-                            <i class="bi bi-person-circle"></i> Profile
+                        <a class="dropdown-item" routerLink="/student/profile">
+                            <i class="bi bi-person-circle" routerLink="/student/profile"></i> Profile
                         </a>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" routerLink="/student/profile">
                             <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> Settings
                         </a>
                         <div class="dropdown-divider"></div>

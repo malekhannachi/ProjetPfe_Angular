@@ -1,64 +1,134 @@
-<div class="body">
-    <div class="container">
-        <div class="content">
-            <div class="left-side">
-                <div class="address details">
+<section id="hero">
+    <div class="inner-banner"
+        style="background-image:url(./../../../../../../assets/front/images/banner-contactus.jpg)">
+        <div class="container">
+            <h3 class="title"> <br>Contacter <strong> l'administration</strong></h3>
+        </div>
+    </div>
+</section>
 
-                    <div class="topic">Address</div>
-                    <div class="text-one">Surkhet, NP12</div>
-                    <div class="text-two">Jendouba Nord ,Jendouba</div>
-                </div>
-                <div class="phone details">
+<section class="main-section">
 
-                    <div class="topic">Phone</div>
-                    <div class="text-one">+216 9893 5647</div>
-                    <div class="text-two">+216 3434 5678</div>
-                </div>
-                <div class="email details">
-
-                    <div class="topic">Email</div>
-                    <div class="text-one">codinglab@gmail.com</div>
-                    <div class="text-two">info.codinglab@gmail.com</div>
+    <div class="contact-section">
+        <div class="container">
+            <div class="row">
+                <div class="section-title col-12">
+                    <h2><span>Get Touch </span>With Us</h2>
+                    <p>Description text here...</p>
                 </div>
             </div>
-            <div class="right-side">
-                <div class="topic-text">Send us a message</div>
-                <p>If you have any work from me or any types of quries related to my tutorial, you can send me message
-                    from
-                    here. It's my pleasure to help you.</p>
-                <form [formGroup]="ContactForm" (submit)="ContactClick()">
-                    <div class="input-box">
-                        <input type="text" placeholder="Entrer votre name" formControlName="name">
-                        <div *ngIf="name?.touched && name?.invalid">
-                            <small class="text-danger" *ngIf="name?.errors?.['required']">mot de passe
-                                est obligatoire</small>
-                        
-                        </div>
-                    </div>
-                    <div class="input-box">
-                        <input type="text" placeholder="Entrer votre email" formControlName="email">
-                        <div *ngIf="email?.touched && email?.invalid">
-                            <small class="text-danger" *ngIf="email?.errors?.['required']"> e-mail
-                                est obligatoire</small>
-                            <small class="text-danger" *ngIf="email?.errors?.['email']">e-mail est
-                                inccorect</small>
-                        </div>
-                    </div>
-                    <div class="input-box message-box">
-                        <textarea placeholder="Entrer votre message" formControlName="message"></textarea>
-                        <div *ngIf="message?.touched && message?.invalid">
-                            <small class="text-danger" *ngIf="message?.errors?.['required']">mot de passe
-                                est obligatoire</small>
-                        
-                        </div>
+            <div class="row">
+                <div class="col-lg-8 col-md-12">
+                    <div class="contact-form">
+                        <form [formGroup]="ContactForm" (submit)="ContactClick()">
+                            <div class="row">
+                                <div class="col-sm-12 appoitntment-title">remplir le formulaire</div>
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Entrer votre name"
+                                            formControlName="name">
+                                        <div *ngIf="name?.touched && name?.invalid">
+                                            <small class="text-danger" *ngIf="name?.errors?.['required']">nom 
+                                                est obligatoire</small>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Entrer votre email"
+                                            formControlName="email">
+
+                                        <div *ngIf="email?.touched && email?.invalid">
+                                            <small class="text-danger" *ngIf="email?.errors?.['required']"> e-mail
+                                                est obligatoire</small>
+                                            <small class="text-danger" *ngIf="email?.errors?.['email']">e-mail est
+                                                inccorect</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" formControlName="tel" placeholder="Entrer numéro de téléphone">
+                                        <div *ngIf="tel?.touched && tel?.invalid">
+                                            <small class="text-danger" *ngIf="tel?.errors?.['required']"> numéro de téléphone
+                                                est obligatoire</small>
+                                            <small class="text-danger" *ngIf="tel?.errors?.['max']">numéro de téléphone est
+                                                inccorect</small>
+                                                <small class="text-danger" *ngIf="tel?.errors?.['min']">numéro de téléphone est
+                                                    inccorect</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" formControlName="subject" placeholder="enter le sujet">
+                                        <div *ngIf="subject?.touched && subject?.invalid">
+                                            <small class="text-danger" *ngIf="subject?.errors?.['required']">sujet 
+                                                est obligatoire</small>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 textarea">
+                                    <div class="form-group">
+                                        <textarea class="form-control" placeholder="Entrer votre message ..."
+                                            formControlName="message"></textarea>
+
+                                        <div *ngIf="message?.touched && message?.invalid">
+                                            <small class="text-danger" *ngIf="message?.errors?.['required']">
+                                            message est obligatoire</small>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <button class="btn btn-primary btn-round">Submit</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
 
-                    <div class="button">
-                        <input type="submit" value="Envoyer">
-                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="contact-sidebar">
+                        <h4>contacter rapide</h4>
+                        <p>Si vous avez des questions, utilisez simplement les coordonnées suivantes.</p>
+                        <ul class="list-unstyled add-grp">
+                            <li>
+                                <i class="zmdi zmdi-pin"></i>
+                                <p>Campus universitaire 8189 <br>Jendouba du nord, Jendouba</p>
+                            </li>
+                            <li>
+                                <i class="zmdi zmdi-phone"></i>
+                                <p><a href="tel:+21692955701">+216 92955701</a>
+                                    <br><a href="tel:+21692955701">+216 92955700</a>
+                                </p>
+                            </li>
+                            <li>
+                                <i class="zmdi zmdi-email"></i>
+                                <p><a href="mailto:isetjendouba@gmail.com">isetjendouba@gmail.com</a></p>
+                            </li>
+                        </ul>
+                        <ul class="list-unstyled social-icon clearfix">
+                            <li><a href="https://www.facebook.com/isetj" target="-blank"><i
+                                        class="zmdi zmdi-facebook-box"></i></a></li>
+                            <li><a href="javascript:void(0);"><i class="zmdi zmdi-google-plus-box"></i></a></li>
+                            <li><a href="javascript:void(0);"><i class="zmdi zmdi-linkedin-box"></i></a></li>
+                            <li><a href="javascript:void(0);"><i class="zmdi zmdi-twitter-box"></i></a></li>
 
-                </form>
+                            <li><a href="javascript:void(0);"><i class="zmdi zmdi-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
+
+    <div class="map-main">
+        <img src="./../../../../../../assets/front/images/map0.png" alt="image non trouvé">
+    </div>
+
+
+</section>

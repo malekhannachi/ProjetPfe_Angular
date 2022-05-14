@@ -66,7 +66,8 @@ export class AdminLoginComponent implements OnInit {
     if (data.email == 0 || data.password == 0) {
       this.toast.error({
         detail: 'Error Message',
-        summary: 'Rempir votre champs',
+        summary: 'Rempir votre champs',duration:2000
+        ,
       });
     } else {
       // login admin

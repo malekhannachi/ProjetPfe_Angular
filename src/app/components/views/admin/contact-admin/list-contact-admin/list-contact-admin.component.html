@@ -19,6 +19,8 @@
                         <th>id</th>
                         <th>nom </th>
                         <th>Email</th>
+                        <th>Telephone</th>
+                        <th>Sujet</th>
                         <th>Message</th>
                         <th>Actions</th>
                     </tr>
@@ -29,10 +31,12 @@
 
                         <td class="align-middle">{{item.name}}</td>
                         <td class="align-middle">{{item.email}}</td>
+                        <td class="align-middle">{{item.tel}}</td>
+                        <td class="align-middle">{{item.subject}}</td>
                         <td class="align-middle">{{item.message}}</td>
                         <td class="align-middle">
-                            <button class="btn btn-sm btn-danger" (click)="delete(item)">
-                                <i class="fas fa-trash-alt"></i>
+                            <button class="btn btn-sm btn-danger"  (click)="delete(item)">
+                                <i class="fas fa-trash-alt"></i> Supprimer
                             </button>
                         </td>
                     </tr>

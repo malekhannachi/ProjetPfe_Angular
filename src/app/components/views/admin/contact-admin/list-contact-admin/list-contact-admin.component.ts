@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgToastService } from 'ng-angular-popup';
 import { ContacterAdminService } from 'src/app/services/contacter-admin.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { ContacterAdminService } from 'src/app/services/contacter-admin.service'
 })
 export class ListContactAdminComponent implements OnInit {
   listContactAdmin:any=[] ;
-  constructor(private contactAdminService: ContacterAdminService) {}
+  constructor(private contactAdminService: ContacterAdminService,private toast:NgToastService) {}
 
   ngOnInit(): void {
     this.contactAdminService.getAllcontactAdmin().subscribe(
@@ -29,6 +30,11 @@ export class ListContactAdminComponent implements OnInit {
         let index = this.listContactAdmin.indexOf(contactAdmin);
         this.listContactAdmin.splice(index, 1);
 console.log(result);
+this.toast.error({
+  detail: ' Message',
+  summary: 'Message est Supprimé',
+  duration: 2000,
+});
 
       },
       error=>{

@@ -25,6 +25,12 @@ export class ContactComponent implements OnInit {
       name: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
       message: new FormControl('', [Validators.required]),
+      tel: new FormControl('', [
+        Validators.required,
+        Validators.min(10000000),
+        Validators.max(99999999),
+      ]),
+      subject: new FormControl('', [Validators.required]),
     };
     this.ContactForm = this.fb.group(formControllers);
   }
@@ -38,16 +44,35 @@ export class ContactComponent implements OnInit {
   get message() {
     return this.ContactForm.get('message');
   }
+  get subject() {
+    return this.ContactForm.get('subject');
+  }
+  get tel() {
+    return this.ContactForm.get('tel');
+  }
 
   ngOnInit(): void {}
 
   ContactClick() {
     let data = this.ContactForm.value;
-    let contact = new Contact(undefined, data.name, data.email, data.message);
+    let contact = new Contact(
+      undefined,
+      data.name,
+      data.email,
+      data.message,
+      data.tel,
+      data.subject
+    );
     console.log(data);
     console.log(contact);
 
-    if (data.name == 0 || data.email == 0 || data.message == 0) {
+    if (
+      data.name == 0 ||
+      data.email == 0 ||
+      data.message == 0 ||
+      data.tel == 0 ||
+      data.subject == 0
+    ) {
       this.toast.error({
         detail: 'Error Message',
         summary: 'Rempir votre champs',

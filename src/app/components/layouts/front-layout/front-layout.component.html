@@ -1,47 +1,185 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" routerLink="">Logo</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" routerLink="">Accueil</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Nouveautés </a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-expanded="false">
-                        Départements
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Génie électrique</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Génie mécanique</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">d'Administration des Affaires</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Technologies de l'Informatique</a>
+<div class="wrapper">
+    <div class="main_header">
+        <div id="top-nav">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-7">
+                        <div class="left">
+                            <ul class="list-unstyled m-b-0">
+                                <li><a href="mailto:isetjendouba@gmail.com" class="btn btn-link"><i
+                                            class="zmdi zmdi-email m-r-5"></i><span>isetjendouba@gmail.com</span></a>
+                                    <a href="tel:+21692955701" class="btn btn-link"><i
+                                            class="zmdi zmdi-phone m-r-5"></i>+216 92955701</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                </li>
+                    <div class="col-lg-6 col-md-5">
+                        <div class="text-right">
+                            <ul class="list-unstyled m-b-0">
 
-                <li class="nav-item">
-                    <a class="nav-link " routerLink="about" tabindex="-1">A propos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " routerLink="contact" tabindex="-1">Contact</a>
-                </li>
-            </ul>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <header id="header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5 col-sm-5">
+                        <a href="index.html" class="navbar-brand"><img
+                                src="./../../../../assets/front/images/download.svg" alt="logo"></a>
+                    </div>
+                    <div class="col-lg-7 col-sm-7">
+                        <div class="text-right">
+                            <p class="col-white m-b-0 p-t-5"><i class="zmdi zmdi-time"></i> Lun - Sam: 8:30 - 18:00
+                            </p>
+                            <p class="col-white m-b-0"><i class="zmdi zmdi-pin"></i> Campus universitaire 8189 Jendouba
+                                du nord
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div id="navbar">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active"><a class="nav-link" routerLink="/">Accueil</a></li>
+                            <li class="nav-item active"><a class="nav-link" routerLink="/event">Évènement</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Présentation</a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" routerLink="/news">Acualités</a>
+                                    <a class="dropdown-item" routerLink="/about">Historique</a>
+                                    <a class="dropdown-item" routerLink="/galary">album des photos</a>
+                                    <a class="dropdown-item">capsule vidéo</a>
 
-            <form class="form-inline my-2 my-lg-0">
-                <a class="btn btn-primary mx-3" routerLink="/student">Espace Etudiant </a>
-                <a class="btn btn-outline-primary" routerLink="/teacher">Espace Ensiegnant </a>
-            </form>
+                                </div>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Départements</a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" routerLink="/department">Génie électrique</a>
+                                    <a class="dropdown-item" routerLink="/department">Génie mécanique</a>
+                                    <a class="dropdown-item" routerLink="/department">Administration des Affaires</a>
+                                    <a class="dropdown-item" routerLink="/department">Technologies de l'Informatique</a>
+
+                                </div>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Services</a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" routerLink="/documents">Documents administratifs</a>
+                                    <a class="dropdown-item" routerLink="/cursus">Inscription au Cursus de la FCAD</a>
+
+
+                                </div>
+                            </li>
+
+
+                            <li class="nav-item"><a class="nav-link" routerLink="/contact">Contacter Nous</a></li>
+                        </ul>
+
+                        <form class="form-inline my-2 my-lg-0">
+                            <a class="btn btn-primary mx-3" routerLink="/student">Espace Etudiant </a>
+                            <a class="btn btn-info" routerLink="/teacher">Espace Ensiegnant </a>
+                        </form>
+                    </div>
+                </nav>
+            </div>
         </div>
     </div>
-</nav>
-<router-outlet></router-outlet>
+
+    <router-outlet></router-outlet>
+
+    <footer id="footer">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-4 col-md-12">
+                    <div class="fcard about">
+                        <h5 class="title">À propos de l'université</h5>
+                        <p>L'ISET de Jendouba, creé en 2002 et recense 1400 étudiants . Il assure, dans le cadre du LMD,
+                            une formation supérieur technologique dans les specialité: Génie électrique, Génie
+                            mécanique,
+                            d'Administration des Affaires, Technologies de l'Informatique.
+
+                        </p>
+                        <div class="social">
+                            <a href="javascript:void(0);"><i class="zmdi zmdi-facebook m-r-10"></i></a>
+                            <a href="javascript:void(0);"><i class="zmdi zmdi-twitter m-r-10"></i></a>
+                            <a href="javascript:void(0);"><i class="zmdi zmdi-instagram m-r-10"></i></a>
+                            <a href="javascript:void(0);"><i class="zmdi zmdi-linkedin-box m-r-10"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="fcard links">
+                        <h5 class="title">Liens utiles</h5>
+                        <div class="row">
+                            <div class="col-6">
+                                <ul class="list-unstyled">
+                                    <li><a routerLink="">Accueil</a></li>
+                                    <li><a routerLink="/about">Historique</a></li>
+
+                                    <li><a routerLink="/news">Nouveautés</a></li>
+                                    <li><a routerLink="/galary">Galeries</a></li>
+                                    <li><a routerLink="/contact">Contacter nous</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-6">
+                                <ul class="list-unstyled">
+                                    <li><a routerLink="/teacher">Espace Ensiegnant</a></li>
+                                    <li><a routerLink="/student">Espace Etudiant</a></li>
+                                    <li><a routerLink="/department">Départements</a></li>
+                                    <li><a routerLink="/documents">Documents </a></li>
+                                    <li><a routerLink="/cursus">Cursus </a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="fcard contact links">
+                        <h5 class="title">Détails du contact</h5>
+                        <ul class="list-unstyled">
+                            <li><i class="zmdi zmdi-pin"></i>Campus universitaire 8189 Jendouba du nord </li>
+                            <li><i class="zmdi zmdi-email"></i>isetjendouba@gmail.com
+                            </li>
+                            <li><i class="zmdi zmdi-phone"></i>+216 92955701</li>
+                            <li><i class="zmdi zmdi-time"></i>Lun - Vend: 8:30 - 18:00</li>
+                            <li><i class="zmdi zmdi-time"></i>Sam - Dim: 8:30 - 13:00</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <small>Copyright &copy; 2022 Created by <a href="https://github.com/malekhannachi"
+                                target="_blank">Malek Hannachi</a> </small>
+                    </div>
+                    <div class="col-lg-6 col-md-6 text-right">
+                        <div class="up"><a routerLink=".."><i class="zmdi zmdi-caret-up-circle"></i></a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>

@@ -21,6 +21,28 @@ const routes: Routes = [
           import('./components/views/front/home/home.module').then(
             (m) => m.HomeModule
           ),
+      }
+      ,
+      {
+        path: 'news',
+        loadChildren: () =>
+          import('./components/views/front/news/news.module').then(
+            (m) => m.NewsModule
+          ),
+      },
+      {
+        path: 'event',
+        loadChildren: () =>
+          import('./components/views/front/event/event.module').then(
+            (m) => m.EventModule
+          ),
+      },
+      {
+        path: 'galary',
+        loadChildren: () =>
+          import('./components/views/front/galary/galary.module').then(
+            (m) => m.GalaryModule
+          ),
       },
       {
         path: 'contact',
@@ -34,6 +56,27 @@ const routes: Routes = [
         loadChildren: () =>
           import('./components/views/front/about/about.module').then(
             (m) => m.AboutModule
+          ),
+      },
+      {
+        path: 'documents',
+        loadChildren: () =>
+          import('./components/views/front/document/document.module').then(
+            (m) => m.DocumentModule
+          ),
+      },
+      {
+        path: 'department',
+        loadChildren: () =>
+          import('./components/views/front/department/department.module').then(
+            (m) => m.DepartmentModule
+          ),
+      },
+      {
+        path: 'cursus',
+        loadChildren: () =>
+          import('./components/views/front/cursus/cursus.module').then(
+            (m) => m.CursusModule
           ),
       },
     ],
@@ -71,6 +114,15 @@ const routes: Routes = [
           import(
             './components/views/student/student-authenticated/student-authenticated.module'
           ).then((m) => m.StudentAuthenticatedModule),
+      },
+      {
+        path: 'profile',
+        canActivateChild:[AuthStudentGuard]
+        ,
+        loadChildren: () =>
+          import(
+            './components/views/student/profile/profile.module'
+          ).then((m) => m.ProfileModule),
       },
     ],
   },
