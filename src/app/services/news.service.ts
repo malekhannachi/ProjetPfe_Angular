@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { News } from '../models/news';
 
 @Injectable({
@@ -13,9 +14,12 @@ export class NewsService {
   private deleteNewsUrl = 'http://localhost:8080/news/delete/';
   constructor(private http: HttpClient) {}
 
-  getAllNews() {
-    return this.http.get<any>(this.getAllNewsUrl);
+  getAllNews(pageNumber:number, limit: number): Observable<News[]> {
+    return this.http.get<News[]>(this.getAllNewsUrl);
   }
+
+  
+
   addNews(news: News) {
     return this.http.post<any>(this.addNewsUrl, news);
   }

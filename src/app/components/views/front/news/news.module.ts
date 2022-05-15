@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { NewsRoutingModule } from './news-routing.module';
 import { NewsComponent } from './news/news.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { NewsComponent } from './news/news.component';
   ],
   imports: [
     CommonModule,
-    NewsRoutingModule
+    NewsRoutingModule,
+    NgxPaginationModule
   ]
 })
 export class NewsModule { }

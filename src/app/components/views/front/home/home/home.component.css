@@ -1,0 +1,25 @@
+.dataTables_paginate ul {
+    text-align: center;
+    display: block;
+    margin: 1rem 0 0 !important
+  }
+
+  .paging_simple_numbers {
+    margin: 0;
+    white-space: nowrap;
+    text-align: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.paging_simple_numbers .pagination {
+    margin: 2px 0;
+    white-space: nowrap;
+    justify-content: flex-end;
+}
+
+.container h3 strong{
+  color: #000;
+
+}

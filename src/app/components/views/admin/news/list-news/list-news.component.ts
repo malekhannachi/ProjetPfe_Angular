@@ -11,7 +11,9 @@ export class ListNewsComponent implements OnInit {
   ListNews: any[] = [];
    
   imgURL: any[] =[];
-
+  limit: any = 4;
+  totalResult: any;
+  currentPage: number = 1;
   constructor(
     private newsService: NewsService,
     private toast: NgToastService
@@ -19,7 +21,7 @@ export class ListNewsComponent implements OnInit {
   
 
   ngOnInit(): void {
-    this.newsService.getAllNews().subscribe(
+    this.newsService.getAllNews(this.currentPage, this.limit).subscribe(
       (res) => {
         this.ListNews = res;
      

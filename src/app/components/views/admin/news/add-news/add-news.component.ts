@@ -32,13 +32,13 @@ export class AddNewsComponent implements OnInit {
     let formControles = {
       titre: new FormControl('', [
         Validators.required,
-        Validators.pattern("[a-z .'-]+"),
+        Validators.pattern("[a-z A-Z 0-9 , .'-]+"),
         Validators.minLength(4),
       ]),
       description: new FormControl('', [
         Validators.required,
-        Validators.pattern("[a-z .'-]+"),
-        Validators.maxLength(30),
+        Validators.pattern("[a-z  A-Z 0-9 , .'-]+"),
+        Validators.maxLength(200),
       ]),
       image: new FormControl('', [Validators.required]),
     };
