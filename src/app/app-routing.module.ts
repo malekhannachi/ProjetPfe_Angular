@@ -159,6 +159,15 @@ const routes: Routes = [
             './components/views/teacher/teacher-authenticated/teacher-authenticated.module'
           ).then((m) => m.TeacherAuthenticatedModule),
       },
+      
+      {
+        path: 'profile',
+        canActivateChild: [AuthTeacherGuard],
+        loadChildren: () =>
+          import(
+            './components/views/teacher/profile/profile.module'
+          ).then((m) => m.ProfileModule),
+      },
 
     
     ],

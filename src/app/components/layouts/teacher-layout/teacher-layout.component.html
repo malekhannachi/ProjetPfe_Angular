@@ -23,7 +23,7 @@
                             <a *ngIf="!ts.isLoggedInTeacher()" class="btn btn-info my-2 mx-3" type="submit"
                                 routerLink="auth-teacher">Se
                                 connecter</a>
-                            <a *ngIf="ts.isLoggedInTeacher()r" class="btn btn-info my-2 mx-3" type="submit" href="">
+                            <a *ngIf="ts.isLoggedInTeacher()r" class="btn btn-info my-2 mx-3" type="submit" routerLink="/teacher/profile">
                                 <i class="bi bi-person-circle"></i>
                                 {{ts.saveDataProfil().firstname}} {{ts.saveDataProfil().lastname}}
                             </a>
