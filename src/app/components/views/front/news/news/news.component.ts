@@ -11,7 +11,7 @@ export class NewsComponent implements OnInit {
   imgURL: any[] =[];
 
   numberOfcat: number = 0;
-  limit: any = 2;
+  limit: any = 3;
   totalResult: any;
   currentPage: number = 1;
   paginationNextLabel: string = '';

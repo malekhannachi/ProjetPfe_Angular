@@ -1,65 +1,73 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Espace Etudiant</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+<div class="wrapper">
+    <div class="main_header">
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
+        <header id="header">
 
-            <li class="nav-item">
-                <a class="nav-link disabled">Disabled</a>
-            </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-
-            <a *ngIf="!studentSerive.isLoggedInStudent()" class="btn btn-primary my-2 my-sm-0" type="submit"
-                routerLink="register-student">S’inscrire</a>
-            <a *ngIf="!studentSerive.isLoggedInStudent()" class="btn btn-info my-2 mx-3" type="submit"
-                routerLink="auth-student">Se
-                connecter</a>
-
-
-
-
-            <ul class="navbar-nav mr-auto" *ngIf="studentSerive.isLoggedInStudent()">
-                <li class="nav-item">
-                    <button class="btn btn-info dropdown-toggle" href="#" id="userDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="bi bi-person-circle"></i>
-                        <span class="mr-2 d-none d-lg-inline text-black-800 "> Compte</span>
+        </header>
+        <div id="navbar">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
                     </button>
-                    <!-- Dropdown - User Information -->
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                        aria-labelledby="userDropdown">
-                        <span class="dropdown-item">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active"><a class="nav-link" routerLink="/student"> Espace Etudiant</a></li>
+                            <li class="nav-item active"><a class="nav-link" routerLink="/">Accueil</a></li>
+                         
 
-                            {{studentSerive.saveDataProfil().firstname}} {{studentSerive.saveDataProfil().lastname}}
-                        </span>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" routerLink="/student/profile">
-                            <i class="bi bi-person-circle" routerLink="/student/profile"></i> Profile
-                        </a>
-                        <a class="dropdown-item" routerLink="/student/profile">
-                            <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> Settings
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <button class="dropdown-item" (click)="logout()">
-                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Se
-                            déconnecter</button>
+
+
+
+
+                        </ul>
+
+                        <form class="form-inline my-2 my-lg-0">
+
+                            <a *ngIf="!studentSerive.isLoggedInStudent()" class="btn btn-primary my-2 my-sm-0"
+                                type="submit" routerLink="register-student">S'inscrire</a>
+                            <a *ngIf="!studentSerive.isLoggedInStudent()" class="btn btn-info my-2 mx-3" type="submit"
+                                routerLink="auth-student">Se
+                                connecter</a>
+
+
+
+
+                            <ul class="navbar-nav mr-auto" *ngIf="studentSerive.isLoggedInStudent()">
+                                <li class="nav-item">
+                                    <button class="btn btn-info dropdown-toggle" href="#" id="userDropdown"
+                                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="bi bi-person-circle"></i>
+                                        <span class="mr-2 d-none d-lg-inline text-black-800 "> Compte</span>
+                                    </button>
+                                    <!-- Dropdown - User Information -->
+                                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                        aria-labelledby="userDropdown">
+                                        <span class="dropdown-item">
+
+                                            {{studentSerive.saveDataProfil().firstname}}
+                                            {{studentSerive.saveDataProfil().lastname}}
+                                        </span>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" routerLink="/student/profile">
+                                            <i class="bi bi-person-circle" routerLink="/student/profile"></i> Profile
+                                        </a>
+                                        <a class="dropdown-item" routerLink="/student/profile">
+                                            <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> Settings
+                                        </a>
+                                        <div class="dropdown-divider"></div>
+                                        <button class="dropdown-item" (click)="logout()">
+                                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Se
+                                            déconnecter</button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </form>
                     </div>
-                </li>
-            </ul>
-        </form>
-
-
+                </nav>
+            </div>
+        </div>
     </div>
-</nav>
-<router-outlet></router-outlet>
+    <router-outlet></router-outlet>

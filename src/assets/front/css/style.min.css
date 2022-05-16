@@ -4112,7 +4112,7 @@ img {
 }
 .footer nav {
   display: inline-block;
-  float: left;
+
 }
 .footer ul {
   margin-bottom: 0;
@@ -13787,7 +13787,7 @@ section .section-top p strong {
   top: 0;
   left: 0;
   opacity: 0;
-  -webkit-transition: all 0.8s ease-in-out;
+  
   border-radius: 0.25rem;
 }
 .our-team .team-box:hover {
@@ -13795,11 +13795,11 @@ section .section-top p strong {
 }
 .our-team .team-box:hover:before {
   opacity: 1;
-  -webkit-transition: all 0.8s ease-in-out;
+ 
 }
 .our-team .team-box:hover .team-info {
   opacity: 1;
-  -webkit-transition: all 0.8s ease-in-out;
+
 }
 .our-team .team-box .professor-pic img {
   width: 100%;
@@ -13811,7 +13811,7 @@ section .section-top p strong {
   left: 0;
   transform: translateY(-50%);
   opacity: 0;
-  -webkit-transition: all 0.8s ease-in-out;
+ 
 }
 .our-team .team-box .team-info h4 {
   font-size: 18px;
@@ -13849,7 +13849,7 @@ section .section-top p strong {
 }
 .home-blog .blog-box:hover {
   box-shadow: 0 2px 25px 0 rgba(0, 0, 0, 0.07);
-  -webkit-transition: all 0.5s ease-in-out;
+ 
 }
 .home-blog .blog-box .blog-cnt h5 a {
   font-size: 18px;
@@ -14105,15 +14105,7 @@ section .section-top p strong {
   -webkit-filter: grayscale(0);
   -webkit-transform: scale(1.01);
 }
-.blog-page .single_post .img-post:hover img {
-  -webkit-transform: scale(1.02);
-  -ms-transform: scale(1.02);
-  transform: scale(1.02);
-  opacity: 0.7;
-  filter: gray;
-  -webkit-filter: grayscale(1);
-  -webkit-transition: all 0.8s ease-in-out;
-}
+
 .blog-page .single_post .img-post .social_share {
   position: absolute;
   bottom: 10px;

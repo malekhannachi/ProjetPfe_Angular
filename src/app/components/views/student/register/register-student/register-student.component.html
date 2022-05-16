@@ -1,3 +1,8 @@
+<section id="hero">
+    <div class="inner-banner">
+
+    </div>
+</section>
 <div class="body">
 
     <div class="container">
@@ -6,7 +11,7 @@
         <form [formGroup]="registerForm" (submit)="registerStudent()">
             <div class="form first">
                 <div class="details personal">
-                    <span class="title">Détails personnels</span>
+              
 
                     <div class="fields">
                         <div class="input-field">
@@ -19,7 +24,7 @@
                                 <small *ngIf="lastname?.errors?.['pattern']" class="text-danger">
                                     Le nom est inccorect
                                 </small>
-                          
+
                                 <small *ngIf="lastname?.errors?.['minlength']" class="text-danger">
                                     Le nom doit comporter au moins 4 caractères.
                                 </small>
@@ -49,7 +54,7 @@
                                 <small *ngIf="date?.errors?.['required']" class="text-danger">
                                     Date est obligatoire.
                                 </small>
-                            
+
                             </div>
                         </div>
 
@@ -57,21 +62,21 @@
                             <label>Lieu de naissance</label>
                             <input type="text" placeholder="Entrer le lieu de naissance"
                                 formControlName="lieu_naissance">
-                                <div *ngIf="lieu_naissance?.invalid && (lieu_naissance?.dirty || lieu_naissance?.touched)">
-                                    <small *ngIf="lieu_naissance?.errors?.['required']" class="text-danger">
-                                        Lieu de naissance est obligatoire.
-                                    </small>
-                                    <small *ngIf="lieu_naissance?.errors?.['pattern']" class="text-danger">
-                                        Lieu de naissance est inccorect
-                                    </small>
-                                
-                                </div>
+                            <div *ngIf="lieu_naissance?.invalid && (lieu_naissance?.dirty || lieu_naissance?.touched)">
+                                <small *ngIf="lieu_naissance?.errors?.['required']" class="text-danger">
+                                    Lieu de naissance est obligatoire.
+                                </small>
+                                <small *ngIf="lieu_naissance?.errors?.['pattern']" class="text-danger">
+                                    Lieu de naissance est inccorect
+                                </small>
+
+                            </div>
                         </div>
 
 
                         <div class="input-field">
                             <label>Carte d'identité</label>
-                            <input type="text" placeholder="Entrer le Carte d'identité"  formControlName="cin">
+                            <input type="text" placeholder="Entrer le Carte d'identité" formControlName="cin">
                             <div *ngIf="cin?.invalid && (cin?.dirty || cin?.touched)">
                                 <small *ngIf="cin?.errors?.['required']" class="text-danger">
                                     Le cin est obligatoire.
@@ -89,8 +94,7 @@
 
                         <div class="input-field">
                             <label>Numéro d'inscription</label>
-                            <input type="number"  placeholder="Entrer le numéro d'inscription"
-                                formControlName="num_ins" >
+                            <input type="number" placeholder="Entrer le numéro d'inscription" formControlName="num_ins">
                             <div *ngIf="num_ins?.invalid && (num_ins?.dirty || num_ins?.touched)">
                                 <small *ngIf="num_ins?.errors?.['required']" class="text-danger">
                                     Le num est obligatoire.
@@ -111,7 +115,7 @@
                 </div>
 
                 <div class="details ID">
-                    <span class="title">Identity Details</span>
+                
 
 
 
@@ -132,27 +136,27 @@
                                 <small *ngIf="nature_bac?.errors?.['required']" class="text-danger">
                                     Nature de bac est obligatoire.
                                 </small>
-                            
+
                             </div>
                         </div>
 
 
                         <div class="input-field">
                             <label>Année de baccalauréat</label>
-                            <input type="number" placeholder="Entrer l'année de baccalauréat" 
+                            <input type="number" placeholder="Entrer l'année de baccalauréat"
                                 formControlName="annee_bac">
-                                <div *ngIf="annee_bac?.invalid && (annee_bac?.dirty || annee_bac?.touched)">
-                                    <small *ngIf="annee_bac?.errors?.['required']" class="text-danger">
-                                        Année de bac est obligatoire.
-                                    </small>
-                                    <small *ngIf="annee_bac?.errors?.['max']" class="text-danger">
-                                        Année de bac entre 2015 et 2021.
-                                    </small>
-                                    <small *ngIf="annee_bac?.errors?.['min']" class="text-danger">
-                                        Année de bac entre 2015 et 2021.
-                                    </small>
-                                
-                                </div>
+                            <div *ngIf="annee_bac?.invalid && (annee_bac?.dirty || annee_bac?.touched)">
+                                <small *ngIf="annee_bac?.errors?.['required']" class="text-danger">
+                                    Année de bac est obligatoire.
+                                </small>
+                                <small *ngIf="annee_bac?.errors?.['max']" class="text-danger">
+                                    Année de bac entre 2015 et 2021.
+                                </small>
+                                <small *ngIf="annee_bac?.errors?.['min']" class="text-danger">
+                                    Année de bac entre 2015 et 2021.
+                                </small>
+
+                            </div>
                         </div>
 
                         <div class="input-field">

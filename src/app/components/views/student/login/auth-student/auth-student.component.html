@@ -1,3 +1,8 @@
+<section id="hero">
+    <div class="inner-banner">
+
+    </div>
+</section>
 <div class="body">
     <div class="content">
         <div class="container">
@@ -9,7 +14,9 @@
                             <div class="form-block">
                                 <div class="mb-4">
                                     <h3>Se connecter à <strong>Espace Etudiant</strong></h3>
-                                    <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur
+                                    <p class="mb-4"> <strong> Attention :</strong> connecter avec CIN et Numéro
+                                        d'inscription
+
                                     </p>
                                 </div>
                                 <form [formGroup]="loginForm" (submit)="loginStudent()">
@@ -20,19 +27,19 @@
                                         <div *ngIf="cin?.touched && cin?.invalid">
                                             <small class="text-danger" *ngIf="cin?.errors?.['required']">cin
                                                 est obligatoire</small>
-                                                <small *ngIf="cin?.errors?.['max']" class="text-danger">
-                                                    Le cin doit comporter au moins 8 caractères.
-                                                </small>
-                                                <small *ngIf="cin?.errors?.['min']" class="text-danger">
-                                                    Le cin doit comporter au moins 8 caractères.
-                                                </small>
+                                            <small *ngIf="cin?.errors?.['max']" class="text-danger">
+                                                Le cin doit comporter au moins 8 caractères.
+                                            </small>
+                                            <small *ngIf="cin?.errors?.['min']" class="text-danger">
+                                                Le cin doit comporter au moins 8 caractères.
+                                            </small>
                                         </div>
 
                                     </div>
                                     <div class="form-group last mb-4">
 
-                                        <input type="password" class="form-control" minlength="8" placeholder="Entrer Mot de Passe"
-                                            formControlName="password">
+                                        <input type="password" class="form-control" minlength="8"
+                                            placeholder="Entrer Mot de Passe" formControlName="password">
                                         <div *ngIf="password?.touched && password?.invalid">
                                             <small class="text-danger" *ngIf="password?.errors?.['required']">mot de
                                                 passe

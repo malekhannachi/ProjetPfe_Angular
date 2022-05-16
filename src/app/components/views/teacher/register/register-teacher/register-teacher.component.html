@@ -1,3 +1,7 @@
+<section id="hero">
+    <div class="inner-banner">
+    </div>
+</section>
 <div class="body">
 
     <div class="container">
@@ -17,7 +21,7 @@
                                 <small *ngIf="lastname?.errors?.['pattern']" class="text-danger">
                                     Le nom est inccorect
                                 </small>
-                          
+
                                 <small *ngIf="lastname?.errors?.['minlength']" class="text-danger">
                                     Le nom doit comporter au moins 4 caractères.
                                 </small>
@@ -45,12 +49,12 @@
                             <input type="text" placeholder="Entrer l'adresse email" formControlName="email">
                             <div *ngIf="email?.invalid && (email?.dirty || email?.touched)">
                                 <small *ngIf="email?.errors?.['required']" class="text-danger">
-                                     email est obligatoire.
+                                    email est obligatoire.
                                 </small>
                                 <small *ngIf="email?.errors?.['email']" class="text-danger">
                                     email est inccorect.
                                 </small>
-                             
+
                             </div>
                         </div>
 
@@ -59,7 +63,7 @@
                             <input type="number" placeholder="Entrer le numéro de téléphone" formControlName="num_tel">
                             <div *ngIf="num_tel?.invalid && (num_tel?.dirty || num_tel?.touched)">
                                 <small *ngIf="num_tel?.errors?.['required']" class="text-danger">
-                                le numéro de téléphone est obligatoire.
+                                    le numéro de téléphone est obligatoire.
                                 </small>
                                 <small *ngIf="num_tel?.errors?.['max']" class="text-danger">
                                     le numéro de téléphone doit comporter au moins 8 caractères.
@@ -124,7 +128,7 @@
                                 <small *ngIf="departement?.errors?.['required']" class="text-danger">
                                     Choisir un département
                                 </small>
-                            
+
                             </div>
                         </div>
 

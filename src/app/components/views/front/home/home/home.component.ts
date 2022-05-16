@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
   titre: string = '';
 
   numberOfcat: number = 0;
-  limit: any = 2;
+  limit: any = 3;
   totalResult: any;
   currentPage: number = 1;
   paginationNextLabel: string = '';
