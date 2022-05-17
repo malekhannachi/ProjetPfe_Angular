@@ -143,6 +143,11 @@ export class RegisterStudentComponent implements OnInit {
         (result) => {
           console.log(result);
           this.router.navigate(['student/auth-student']);
+          this.toast.success({
+            detail: ' Message',
+            summary: 'la compte est creé',
+            duration: 2000,
+          });
         },
         (error) => {
           console.log(error);

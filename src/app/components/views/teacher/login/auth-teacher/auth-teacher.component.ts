@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 import { Teacher } from 'src/app/models/teacher';
 import { TeacherService } from 'src/app/services/teacher.service';
 
@@ -20,10 +21,15 @@ export class AuthTeacherComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private teacherService: TeacherService,
-    private router: Router
+    private router: Router,
+    private toast: NgToastService
   ) {
     let formControls = {
-      cin: new FormControl('', [Validators.required, Validators.max(99999999),Validators.min(10000000)]),
+      cin: new FormControl('', [
+        Validators.required,
+        Validators.max(99999999),
+        Validators.min(10000000),
+      ]),
       password: new FormControl('', [
         Validators.required,
         Validators.minLength(8),
@@ -63,25 +69,41 @@ export class AuthTeacherComponent implements OnInit {
     );
     console.log(data);
     console.log(teacher);
-    
+
     if (data.cin == 0 || data.password == 0) {
-      alert('Remplir Votre champs');
+      this.toast.info({
+        detail: 'info Message',
+        summary: 'Remplir Votre champs',
+        duration: 2000,
+      });
     } else {
-    this.teacherService.loginTeacher(teacher).subscribe(
-      (res) => {
-        console.log(res);
+      this.teacherService.loginTeacher(teacher).subscribe(
+        (res) => {
+          console.log(res);
 
-        let token = res.token;
-        localStorage.setItem('TokenTeacher', token);
+          let token = res.token;
+          localStorage.setItem('TokenTeacher', token);
 
+          this.router.navigate(['teacher/account-teacher']);
+        },
+        (error) => {
+          console.log(error);
+
+       
+            
+            this.toast.error({
+              detail: 'error Message',
+              summary: error.error.message,
+              duration: 2000,
+
+             
+              
+            });
+
+            console.log(error.error.message);
+          })
         
-
-        this.router.navigate(['teacher/account-teacher']);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+  
+    }
   }
-}
 }

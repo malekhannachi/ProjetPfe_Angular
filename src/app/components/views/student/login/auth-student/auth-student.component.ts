@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 import { Student } from 'src/app/models/student';
 import { StudentService } from 'src/app/services/student.service';
 
@@ -19,7 +20,8 @@ export class AuthStudentComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private studentService: StudentService,
-    private route: Router
+    private route: Router,
+    private toast:NgToastService
   ) {
     let formControlls = {
       cin: new FormControl('', [
@@ -57,7 +59,8 @@ export class AuthStudentComponent implements OnInit {
 
     if (data.cin == 0 || data.password == 0) {
       alert('Remplir Votre champs');
-    } else {
+    } 
+    else {
       this.studentService.loginStudent(student).subscribe(
         (result) => {
           console.log(result);
@@ -67,9 +70,16 @@ export class AuthStudentComponent implements OnInit {
         },
         (error) => {
           console.log(error);
-          alert('Connection à echoué');
+          this.toast.error({
+            detail: 'error Message',
+            summary: error.error.message,
+            duration: 2000,
+          });
+
+
+        
         }
-      );
+      )
     }
   }
 }

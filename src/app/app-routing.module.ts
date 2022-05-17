@@ -107,6 +107,13 @@ const routes: Routes = [
           ),
       },
       {
+        path: 'document',
+        loadChildren: () =>
+          import('./components/views/student/document/document.module').then(
+            (m) => m.DocumentModule
+          ),
+      },
+      {
         path: 'account-student',
         canActivateChild:[AuthStudentGuard]
         ,
