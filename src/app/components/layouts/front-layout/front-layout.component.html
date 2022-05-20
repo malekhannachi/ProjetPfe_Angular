@@ -28,8 +28,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-5 col-sm-5">
-                        <a href="index.html" class="navbar-brand"><img
-                                src="./../../../../assets/front/images/download.svg" alt="logo"></a>
+                        <a routerLink="" class="navbar-brand"><img src="./../../../../assets/front/images/download.svg"
+                                alt="logo"></a>
+
                     </div>
                     <div class="col-lg-7 col-sm-7">
                         <div class="text-right">
@@ -71,10 +72,13 @@
                                 <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Départements</a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" routerLink="/department">Génie électrique</a>
-                                    <a class="dropdown-item" routerLink="/department">Génie mécanique</a>
-                                    <a class="dropdown-item" routerLink="/department">Administration des Affaires</a>
-                                    <a class="dropdown-item" routerLink="/department">Technologies de l'Informatique</a>
+                                    <a class="dropdown-item" [routerLink]="['./department']" fragment="ge">Génie
+                                        électrique</a>
+                                    <a class="dropdown-item" routerLink="department" fragment="gm">Génie mécanique</a>
+                                    <a class="dropdown-item" routerLink="department" fragment="af">Administration des
+                                        Affaires</a>
+                                    <a class="dropdown-item" routerLink="department" fragment="ti">Technologies de
+                                        l'Informatique</a>
 
                                 </div>
                             </li>
@@ -104,7 +108,7 @@
         </div>
     </div>
 
-    <router-outlet></router-outlet>
+    <router-outlet (activate)="onActive()"></router-outlet>
 
     <footer id="footer">
         <div class="container">
@@ -177,7 +181,8 @@
                                 target="_blank">Malek Hannachi</a> </small>
                     </div>
                     <div class="col-lg-6 col-md-6 text-right">
-                        <div class="up"><a routerLink=".."><i class="zmdi zmdi-caret-up-circle"></i></a></div>
+                        <div class="up"><a [routerLink]="['/']" fragment="top-nav"><i
+                                    class="zmdi zmdi-caret-up-circle"></i></a></div>
                     </div>
                 </div>
             </div>

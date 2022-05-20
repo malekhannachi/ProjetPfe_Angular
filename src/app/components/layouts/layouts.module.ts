@@ -17,7 +17,9 @@ import { PageInvalidComponent } from './page-invalid/page-invalid.component';
     TeacherLayoutComponent,
     AdminLoginComponent,
     PageInvalidComponent,
+
   ],
-  imports: [CommonModule, RouterModule,FormsModule,ReactiveFormsModule],
+  imports: [CommonModule, RouterModule,FormsModule,ReactiveFormsModule,
+  ],
 })
 export class LayoutsModule {}

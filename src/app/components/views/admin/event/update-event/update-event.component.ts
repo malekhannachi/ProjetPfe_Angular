@@ -5,7 +5,8 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Event } from 'src/app/models/event';
 import { EventService } from 'src/app/services/event.service';
 
 @Component({
@@ -14,8 +15,8 @@ import { EventService } from 'src/app/services/event.service';
   styleUrls: ['./update-event.component.css'],
 })
 export class UpdateEventComponent implements OnInit {
-  addForm: FormGroup;
-
+  updateForm: FormGroup;
+  id: any;
   userFile: any;
   public imagePath: any;
   imgURL: any = '';
@@ -23,37 +24,90 @@ export class UpdateEventComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private eventService: EventService,
-    private route: Router
+    private route: Router,
+    private router: ActivatedRoute
   ) {
     let formControles = {
       titre: new FormControl('', [
         Validators.required,
-        Validators.pattern("[a-z .'-]+"),
+        Validators.pattern("[a-z A-Z .'-]+"),
         Validators.minLength(4),
       ]),
       description: new FormControl('', [
         Validators.required,
         Validators.pattern("[a-z .'-]+"),
-        Validators.maxLength(60),
+        Validators.maxLength(160),
       ]),
       image: new FormControl('', [Validators.required]),
+
+      palace: new FormControl('', [
+        Validators.required,
+        Validators.pattern("[a-z .'-]+"),
+        Validators.minLength(4),
+      ]),
+      time: new FormControl('', [Validators.required]),
+      date: new FormControl('', [Validators.required]),
     };
-    this.addForm = this.fb.group(formControles);
+    this.updateForm = this.fb.group(formControles);
   }
 
   get titre() {
-    return this.addForm.get('titre');
+    return this.updateForm.get('titre');
   }
   get description() {
-    return this.addForm.get('description');
+    return this.updateForm.get('description');
   }
   get image() {
-    return this.addForm.get('image');
+    return this.updateForm.get('image');
   }
 
-  ngOnInit(): void {}
+  get time() {
+    return this.updateForm.get('time');
+  }
+  get palace() {
+    return this.updateForm.get('palace');
+  }
+  get date() {
+    return this.updateForm.get('date');
+  }
 
-  updateEvent() {}
+  ngOnInit(): void {
+    let idEvent = this.router.snapshot.params['id'];
+    this.id = idEvent;
+
+    this.eventService.getOneEvent(idEvent).subscribe((result) => {
+      let event = result;
+      console.log(event);
+      this.updateForm.patchValue({
+        titre: event.titre,
+        description: event.description,
+        palace: event.place,
+        time: event.time,
+        date: event.date,
+      });
+    });
+  }
+
+  updateEvent() {
+    let data = this.updateForm.value;
+
+    let event = new Event(
+      this.id,
+      data.titre,
+      data.description,
+      data.palace,
+      data.time,
+      data.date,
+      this.imgURL
+    );
+    console.log(event);
+    console.log(data);
+    this.eventService.updateEvent(event).subscribe((res) => {
+      console.log(res);
+      this.route.navigate(['/admin/list-event'])
+      
+    });
+  }
 
   //upload Image
   onSelectFile(event: any) {

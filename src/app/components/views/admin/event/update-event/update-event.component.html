@@ -13,10 +13,11 @@
         </div>
 
         <div class="card-body">
-            <form [formGroup]="addForm" (ngSubmit)="updateEvent()">
+            <form [formGroup]="updateForm" (ngSubmit)="updateEvent()">
                 <div class="form-group">
                     <label for="titre" id="titre">Titre : </label>
                     <input type="text" class="form-control" formControlName="titre">
+                    
                     <div *ngIf="titre?.touched && titre?.invalid">
                         <small class="text-danger" *ngIf="titre?.errors?.['required']">champ
                             est obligatoire</small>
@@ -42,21 +43,24 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="description" id="description">Palace : </label>
-                    <input type="text" class="form-control" formControlName="description">
+                    <label for="description" id="description">Place : </label>
+                    <input type="text" class="form-control" formControlName="palace">
 
                 </div>
 
                 <div class="form-group">
                     <label for="description" id="description">Date de évenment : </label>
-                    <input type="date" class="form-control" formControlName="description">
-
+                    <input type="date" class="form-control" formControlName="date">
+                    <div *ngIf="date?.touched && date?.invalid">
+                        <small class="text-danger" *ngIf="date?.errors?.['required']">Date
+                            est obligatoire</small>
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <label for="description" id="description">Heure de évenment : </label>
-                    <select class="custom-select">
-                        <option selected="" hidden>Choisir heure</option>
+                    <select class="custom-select" formControlName="time">
+                        <option hidden>Choisir heure</option>
                         <option>8:00 - 9:00</option>
                         <option>9:00 - 10:00</option>
                         <option>10:00 - 11:00</option>
@@ -68,6 +72,10 @@
                         <option>17:00 - 18:00</option>
 
                     </select>
+                    <div *ngIf="time?.touched && time?.invalid">
+                        <small class="text-danger" *ngIf="time?.errors?.['required']">Heure
+                            est obligatoire</small>
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -84,7 +92,7 @@
 
 
 
-                <button type="submit" class="btn btn-sm btn-warning mt-3" [disabled]="addForm.invalid">Modifier</button>
+                <button type="submit" class="btn btn-sm btn-warning mt-3" [disabled]="updateForm.invalid">Modifier</button>
             </form>
         </div>
     </div>

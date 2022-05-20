@@ -2,18 +2,18 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Ajouter une Actualité</h1>
+        <h1 class="h3 mb-0 text-gray-800">Ajouter un Evenment</h1>
     </div>
 
 </div>
 <div class="col">
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-            <h6 class="m-0 font-weight-bold text-info">Ajouter une actualité </h6>
+            <h6 class="m-0 font-weight-bold text-info">Ajouter un évenment </h6>
         </div>
 
         <div class="card-body">
-            <form [formGroup]="addForm" (ngSubmit)="addNews()">
+            <form [formGroup]="addForm" (ngSubmit)="addEvent()">
                 <div class="form-group">
                     <label for="titre" id="titre">Titre : </label>
                     <input type="text" class="form-control" formControlName="titre">

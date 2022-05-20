@@ -1,15 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-front-layout',
   templateUrl: './front-layout.component.html',
-  styleUrls: ['./front-layout.component.css']
+  styleUrls: ['./front-layout.component.css'],
 })
 export class FrontLayoutComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor() {
+ 
   }
 
+  ngOnInit(): void {}
+
+  onActive() {
+    window.scroll(0, 0);
+  }
 }

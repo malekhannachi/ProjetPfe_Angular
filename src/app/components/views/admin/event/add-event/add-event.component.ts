@@ -71,7 +71,7 @@ export class AddEventComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  addNews() {
+  addEvent() {
     let data = this.addForm.value;
     let event = new Event(
       undefined,

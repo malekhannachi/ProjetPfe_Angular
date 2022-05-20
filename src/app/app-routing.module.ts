@@ -6,11 +6,16 @@ import { FrontLayoutComponent } from './components/layouts/front-layout/front-la
 import { PageInvalidComponent } from './components/layouts/page-invalid/page-invalid.component';
 import { StudentLayoutComponent } from './components/layouts/student-layout/student-layout.component';
 import { TeacherLayoutComponent } from './components/layouts/teacher-layout/teacher-layout.component';
+import { HomeComponent } from './components/views/front/home/home/home.component';
 import { AuthAdminGuard } from './guards/auth-admin.guard';
 import { AuthStudentGuard } from './guards/auth-student.guard';
 import { AuthTeacherGuard } from './guards/auth-teacher.guard';
 
 const routes: Routes = [
+  {
+    path: 'home',   redirectTo:'',
+  
+  },
   {
     path: '',
     component: FrontLayoutComponent,
@@ -21,8 +26,7 @@ const routes: Routes = [
           import('./components/views/front/home/home.module').then(
             (m) => m.HomeModule
           ),
-      }
-      ,
+      },
       {
         path: 'news',
         loadChildren: () =>
@@ -115,8 +119,7 @@ const routes: Routes = [
       },
       {
         path: 'account-student',
-        canActivateChild:[AuthStudentGuard]
-        ,
+        canActivateChild: [AuthStudentGuard],
         loadChildren: () =>
           import(
             './components/views/student/student-authenticated/student-authenticated.module'
@@ -124,12 +127,11 @@ const routes: Routes = [
       },
       {
         path: 'profile',
-        canActivateChild:[AuthStudentGuard]
-        ,
+        canActivateChild: [AuthStudentGuard],
         loadChildren: () =>
-          import(
-            './components/views/student/profile/profile.module'
-          ).then((m) => m.ProfileModule),
+          import('./components/views/student/profile/profile.module').then(
+            (m) => m.ProfileModule
+          ),
       },
     ],
   },
@@ -166,17 +168,15 @@ const routes: Routes = [
             './components/views/teacher/teacher-authenticated/teacher-authenticated.module'
           ).then((m) => m.TeacherAuthenticatedModule),
       },
-      
+
       {
         path: 'profile',
         canActivateChild: [AuthTeacherGuard],
         loadChildren: () =>
-          import(
-            './components/views/teacher/profile/profile.module'
-          ).then((m) => m.ProfileModule),
+          import('./components/views/teacher/profile/profile.module').then(
+            (m) => m.ProfileModule
+          ),
       },
-
-    
     ],
   },
   { path: 'auth-admin', component: AdminLoginComponent },
@@ -216,9 +216,9 @@ const routes: Routes = [
       {
         path: 'list-contact',
         loadChildren: () =>
-          import('./components/views/admin/contact-admin/contact-admin.module').then(
-            (m) => m.ContactAdminModule
-          ),
+          import(
+            './components/views/admin/contact-admin/contact-admin.module'
+          ).then((m) => m.ContactAdminModule),
       },
       {
         path: '',
@@ -248,13 +248,17 @@ const routes: Routes = [
             (m) => m.EventModule
           ),
       },
-      
     ],
-  }, { path: '**', component: PageInvalidComponent },
+  },
+  { path: '**', component: PageInvalidComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, {
+      anchorScrolling: 'enabled',
+    }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

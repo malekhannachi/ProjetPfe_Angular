@@ -5,7 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import { News } from 'src/app/models/news';
 import { NewsService } from 'src/app/services/news.service';
@@ -17,7 +17,7 @@ import { NewsService } from 'src/app/services/news.service';
 })
 export class UpdateNewsComponent implements OnInit {
   updateForm: FormGroup;
-id :any
+  id: any;
 
   userFile: any;
   public imagePath: any;
@@ -58,7 +58,7 @@ id :any
 
   ngOnInit(): void {
     let idNews = this.route.snapshot.params['id'];
-    this.id= idNews
+    this.id = idNews;
     console.log(idNews);
     this.newsService.getOneNews(idNews).subscribe(
       (result) => {
@@ -101,7 +101,6 @@ id :any
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       this.userFile = file;
-  
 
       var mimeType = event.target.files[0].type;
       if (mimeType.match(/image\/*/) == null) {
