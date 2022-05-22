@@ -73,7 +73,7 @@ export class ContactComponent implements OnInit {
       data.tel == 0 ||
       data.subject == 0
     ) {
-      this.toast.error({
+      this.toast.info({
         detail: 'Error Message',
         summary: 'Rempir votre champs',
       });

@@ -87,8 +87,7 @@ export class AddEventComponent implements OnInit {
 
     this.eventService.addEvent(event).subscribe((res) => {
       console.log(res);
-      this.route.navigate(['admin/event'])
-      
+      this.route.navigate(['admin/event']);
     });
   }
 

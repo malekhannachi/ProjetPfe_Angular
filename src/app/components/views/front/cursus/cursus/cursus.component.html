@@ -1,9 +1,180 @@
 <section id="hero">
     <div class="inner-banner" style="background-image:url(./../../../../../../assets/front/images/inscription.jpg)">
         <div class="container">
-            <h3 class="title"> <br>Inscription au <strong>  Cursus de la FCAD</strong></h3>
+            <h3 class="title"> <br>Inscription au <strong> Cursus de la FCAD</strong></h3>
         </div>
     </div>
 </section>
-Demande d'inscription dans un cursus de la formation continue et à distance
 
+
+<section class="main-section">
+
+    <div class="contact-section">
+        <div class="container">
+            <div class="row">
+                <div class="section-title col-12">
+                    <h2><span>
+                            Demande
+                        </span>d'inscription dans un cursus</h2>
+                    <p>Demande d'inscription dans un cursus de la formation continue et à distance</p>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <form [formGroup]="CursusForm" (submit)="curcusClick()">
+                    <div class="row" id="form">
+
+
+                        <div class="col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <label>Nom :</label>
+                                <input type="text" class="form-control" placeholder="Entrer votre nom"
+                                    formControlName="name">
+                                <div *ngIf="lastname?.touched && lastname?.invalid">
+                                    <small class="text-danger" *ngIf="lastname?.errors?.['required']">nom
+                                        est obligatoire</small>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <label>Prénom :</label>
+                                <input type="text" class="form-control" placeholder="Entrer votre prénom"
+                                    formControlName="name">
+                                <div *ngIf="lastname?.touched && lastname?.invalid">
+                                    <small class="text-danger" *ngIf="lastname?.errors?.['required']">nom
+                                        est obligatoire</small>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <label>Carte d'Identité :</label>
+                                <input type="number" class="form-control" formControlName="cin"
+                                    placeholder="Entrer numéro de Carte d'identité">
+                                <div *ngIf="cin?.touched && cin?.invalid">
+                                    <small class="text-danger" *ngIf="cin?.errors?.['required']"> Cin de
+                                        téléphone
+                                        est obligatoire</small>
+                                    <small class="text-danger" *ngIf="cin?.errors?.['max']">Cin de téléphone
+                                        est
+                                        inccorect</small>
+                                    <small class="text-danger" *ngIf="cin?.errors?.['min']">Cin de téléphone
+                                        est
+                                        inccorect</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <label> Numéro de téléphone</label>
+                                <input type="number" class="form-control" formControlName="tel"
+                                    placeholder="Entrer numéro de téléphone">
+                                <div *ngIf="tel?.touched && tel?.invalid">
+                                    <small class="text-danger" *ngIf="tel?.errors?.['required']"> numéro de
+                                        téléphone
+                                        est obligatoire</small>
+                                    <small class="text-danger" *ngIf="tel?.errors?.['max']">numéro de téléphone
+                                        est
+                                        inccorect</small>
+                                    <small class="text-danger" *ngIf="tel?.errors?.['min']">numéro de téléphone
+                                        est
+                                        inccorect</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <label for="">Date de naissance :</label>
+                                <input type="date" class="form-control" formControlName="date">
+                                <div *ngIf="date?.touched && (date?.invalid || date?.dirty   )"  >
+                                    <small class="text-danger" *ngIf="date?.errors?.['required']"> date de naissance
+
+                                        est obligatoire</small>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-6 col-sm-12">
+
+                            <div class="form-group">
+                                <label for="">Adresse :</label>
+                                <input type="text" class="form-control" placeholder="Entrer votre Adresse"
+                                    formControlName="adrs">
+
+                                <div *ngIf="adrs?.touched && adrs?.invalid">
+                                    <small class="text-danger" *ngIf="adrs?.errors?.['required']"> e-mail
+                                        est obligatoire</small>
+                                    <small class="text-danger" *ngIf="adrs?.errors?.['email']">e-mail est
+                                        inccorect</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+
+                            <div class="form-group">
+                                <label for="">Email :</label>
+                                <input type="text" class="form-control" placeholder="Entrer votre email"
+                                    formControlName="email">
+
+                                <div *ngIf="email?.touched && email?.invalid">
+                                    <small class="text-danger" *ngIf="email?.errors?.['required']"> e-mail
+                                        est obligatoire</small>
+                                    <small class="text-danger" *ngIf="email?.errors?.['email']">e-mail est
+                                        inccorect</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <label>Situation :</label>
+                                <select class="form-control" formControlName="situation">
+                                    <option value="" disabled hidden>Choisir la Situation</option>
+                                    <option>
+                                        Etudiant</option>
+                                    <option>
+                                        Employé</option>
+                                    <option>
+                                        Autre</option>
+
+                                </select>
+                                <div *ngIf="situation?.touched && situation?.invalid">
+                                    <small class="text-danger" *ngIf="situation?.errors?.['required']"> Situation
+
+                                        est obligatoire</small>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12" id="col12" style="text-align:right ;">
+
+                            <button type="submit" class="btn btn-primary btn-round mr-3">Envoyer</button>
+                            <button type="reset" class="btn btn-info btn-round ">Effacer</button>
+
+                            <br>
+
+                        </div>
+                        <br>
+                    </div>
+                    <br> <br>
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+</section>

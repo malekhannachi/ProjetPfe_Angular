@@ -160,7 +160,7 @@
                         </div>
 
                         <div class="input-field">
-                            <label>Classe</label>
+                            <label>Groupe</label>
                             <input type="text" placeholder="Enter la Classe" formControlName="classe">
                             <div *ngIf="classe?.invalid && (classe?.dirty || classe?.touched)">
                                 <small *ngIf="classe?.errors?.['required']" class="text-danger">
@@ -173,15 +173,17 @@
                         </div>
 
                         <div class="input-field">
-                            <label>Groupe</label>
-                            <input type="text" placeholder="Enter le groupe" formControlName="groupe">
+                            <label>Promotion</label>
+                            
+                            <select  formControlName="groupe">
+                                <option value="" selected hidden>Choisir Groupe</option>
+                                <option [ngValue]="grp" *ngFor="let grp of groupeList">{{grp.namegroupe}}</option>
+                              </select>
                             <div *ngIf="groupe?.invalid && (groupe?.dirty || groupe?.touched)">
                                 <small *ngIf="groupe?.errors?.['required']" class="text-danger">
                                     Le groupe est obligatoire.
                                 </small>
-                                <small *ngIf="groupe?.errors?.['pattern']" class="text-danger">
-                                    Le groupe est inccorect.
-                                </small>
+                              
                             </div>
                         </div>
 

@@ -42,7 +42,7 @@ export class ListStudentsComponent implements OnInit {
     let index=this.listStudent.indexOf(student);
     if(student.accountState==true)
     {let newStudent=new Student(student.id_student,student.cin,student.num_ins,student.firstname,student.lastname,student.date,student.lieu_naissance,
-      student.classe,student.groupe,student.nature_bac,student.annee_bac,false)
+      student.classe,student.nature_bac,student.annee_bac,false)
   this.studentService.updateStudent(newStudent).subscribe
   (
     res=>{console.log(res)
@@ -55,7 +55,7 @@ export class ListStudentsComponent implements OnInit {
     else{
 
       let newStudent=new Student(student.id_student,student.cin,student.num_ins,student.firstname,student.lastname,student.date,student.lieu_naissance,
-        student.classe,student.groupe,student.nature_bac,student.annee_bac,true)
+        student.classe,student.nature_bac,student.annee_bac,true)
     this.studentService.updateStudent(newStudent).subscribe
     (
       res=>{console.log(res)

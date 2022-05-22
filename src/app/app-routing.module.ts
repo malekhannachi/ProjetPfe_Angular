@@ -133,6 +133,29 @@ const routes: Routes = [
             (m) => m.ProfileModule
           ),
       },
+      {
+        path: 'timetable',
+        canActivateChild: [AuthStudentGuard],
+        loadChildren: () =>
+          import('./components/views/student/timetable/timetable.module').then(
+            (m) => m.TimetableModule
+          ),
+      },
+      {
+        path: 'calendar-exam',
+        canActivateChild: [AuthStudentGuard],
+        loadChildren: () =>
+          import('./components/views/student/exam/exam.module').then(
+            (m) => m.ExamModule
+          ),
+      }, {
+        path: 'result-exam',
+        canActivateChild: [AuthStudentGuard],
+        loadChildren: () =>
+          import('./components/views/student/result/result.module').then(
+            (m) => m.ResultModule
+          ),
+      },
     ],
   },
   {
@@ -167,6 +190,15 @@ const routes: Routes = [
           import(
             './components/views/teacher/teacher-authenticated/teacher-authenticated.module'
           ).then((m) => m.TeacherAuthenticatedModule),
+      },
+      
+      {
+        path: 'timetable',
+        canActivateChild: [AuthTeacherGuard],
+        loadChildren: () =>
+          import(
+            './components/views/teacher/timetable/timetable.module'
+          ).then((m) => m.TimetableModule),
       },
 
       {

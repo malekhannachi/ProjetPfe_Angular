@@ -1,3 +1,5 @@
+import { Groupe } from './groupe';
+
 export class Student {
   constructor(
     public id_student?: Number,
@@ -8,9 +10,9 @@ export class Student {
     public date?: Date,
     public lieu_naissance?: String,
     public classe?: String,
-    public groupe?: String,
     public nature_bac?: String,
     public annee_bac?: String,
-    public accountState?:Boolean
+    public accountState?: Boolean,
+    public groupe?: Groupe
   ) {}
 }

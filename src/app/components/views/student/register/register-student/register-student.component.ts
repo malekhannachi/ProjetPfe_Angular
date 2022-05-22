@@ -7,7 +7,9 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
+import { Groupe } from 'src/app/models/groupe';
 import { Student } from 'src/app/models/student';
+import { GroupeService } from 'src/app/services/groupe.service';
 import { StudentService } from 'src/app/services/student.service';
 
 @Component({
@@ -17,11 +19,13 @@ import { StudentService } from 'src/app/services/student.service';
 })
 export class RegisterStudentComponent implements OnInit {
   registerForm: FormGroup;
+  groupeList: any[] = [];
   constructor(
     private fb: FormBuilder,
     private studentService: StudentService,
     private router: Router,
-    private toast: NgToastService
+    private toast: NgToastService,
+    private groupeService: GroupeService
   ) {
     let formControls = {
       firstname: new FormControl('', [
@@ -102,11 +106,15 @@ export class RegisterStudentComponent implements OnInit {
     if (isLoggedInStudent) {
       this.router.navigate(['/student/account-student']);
     }
+    this.groupeService.getAllGroupe().subscribe((result) => {
+      this.groupeList = result;
+      console.log(this.groupeList);
+    });
   }
 
   registerStudent() {
     let data = this.registerForm.value;
-    console.log(data);
+
     let student = new Student(
       undefined,
       data.cin,
@@ -116,9 +124,11 @@ export class RegisterStudentComponent implements OnInit {
       data.date,
       data.lieu_naissance,
       data.classe,
-      data.groupe,
+
       data.nature_bac,
-      data.annee_bac
+      data.annee_bac,
+      true,
+      new Groupe(data.groupe.id)
     );
     console.log(student);
     if (

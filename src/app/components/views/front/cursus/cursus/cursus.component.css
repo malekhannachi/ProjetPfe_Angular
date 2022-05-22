@@ -1,0 +1,31 @@
+.form-control {
+  height: calc(1.5em + 0.75rem + 6px);
+}
+
+#form {
+  background-color: #eee;
+  border: 1px;
+  border-radius: 10px;
+}
+
+.contact-section {
+  padding-bottom: 0;
+}
+
+element.style {
+  text-align: right;
+  margin: 10px;
+}
+
+#col12 {
+  padding-bottom: 10px;
+}
+
+ontact-section .contact-form .appoitntment-title,
+.contact-section .contact-form .form-group,
+.contact-section .contact-form textarea .form-group,
+.blog-page .right-box .popular-post ul li,
+.blog-page .comment-reply li {
+  margin-bottom: 8px;
+  margin-top: 8px;
+}
