@@ -253,6 +253,13 @@ const routes: Routes = [
           ).then((m) => m.ContactAdminModule),
       },
       {
+        path: 'list-demandecursus',
+        loadChildren: () =>
+          import(
+            './components/views/admin/list-demande-cursus/list-demande-cursus.module'
+          ).then((m) => m.ListDemandeCursusModule),
+      },
+      {
         path: '',
         loadChildren: () =>
           import('./components/views/admin/news/news.module').then(

@@ -32,13 +32,14 @@ export class ListEventComponent implements OnInit {
     this.eventService.deleteEvent(event.id).subscribe(
       (result) => {
         console.log(result);
+       
+        let index = this.ListEvent.indexOf(event);
+        this.ListEvent.splice(index, 1);
         this.toast.error({
           detail: ' Message',
           summary: 'évenment est Supprimé',
           duration: 2000,
         });
-        let index = this.ListEvent.indexOf(event);
-        this.ListEvent.splice(index, 1);
       },
       (error) => {
         console.log(error);

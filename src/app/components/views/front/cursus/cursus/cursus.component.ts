@@ -6,6 +6,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { NgToastService } from 'ng-angular-popup';
+import { DemandeCursus } from 'src/app/models/demande-cursus';
+import { DemandeCursusService } from 'src/app/services/demande-cursus.service';
 
 @Component({
   selector: 'app-cursus',
@@ -14,12 +16,15 @@ import { NgToastService } from 'ng-angular-popup';
 })
 export class CursusComponent implements OnInit {
   CursusForm!: FormGroup;
-  constructor(private fb: FormBuilder, private toast: NgToastService) {
+  constructor(
+    private fb: FormBuilder,
+    private toast: NgToastService,
+    private demandeService: DemandeCursusService
+  ) {
     let formControllers = {
       firstname: new FormControl('', [Validators.required]),
       lastname: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
-      message: new FormControl('', [Validators.required]),
       tel: new FormControl('', [
         Validators.required,
         Validators.min(10000000),
@@ -69,19 +74,39 @@ export class CursusComponent implements OnInit {
 
   curcusClick() {
     let data = this.CursusForm.value;
-
+    let demandeCurus = new DemandeCursus(
+      undefined,
+      data.firstname,
+      data.lastname,
+      data.cin,
+      data.tel,
+      data.email,
+      data.adrs,
+      data.date,
+      data.situation
+    );
     console.log(data);
+    console.log(demandeCurus);
 
     if (
-      data.name == 0 ||
+      (data.firstname == 0 || data.lastname == 0 || data.cin == 0 || data.tel,
       data.email == 0 ||
-      data.message == 0 ||
-      data.tel == 0 ||
-      data.subject == 0
+        data.date == 0 ||
+        data.situation == 0 ||
+        data.adrs == 0)
     ) {
-      this.toast.error({
+      this.toast.info({
         detail: 'Error Message',
         summary: 'Rempir votre champs',
+      });
+    } else {
+      this.demandeService.addDemandeCursus(demandeCurus).subscribe((res) => {
+        console.log(res);
+        this.toast.success({
+       
+          summary:
+            'enregistré avec succès. nous vous contacterons dès que possible',
+        });
       });
     }
   }

@@ -1,0 +1,57 @@
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800"> Liste des Messages Envoyées</h1>
+    </div>
+
+</div>
+<div class="col ml-2">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary"> Liste des Messages</h6>
+        </div>
+
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Prénom </th>
+                        <th>Nom</th>
+                        <th>Cin</th>
+                        <th>Email</th>
+                        <th>Adresse</th>
+
+                        <th>Telephone</th>
+                        <th>Date de naissance</th>
+                        <th>Situation</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of listDemandeCursus">
+                        <td class="align-middle">{{item.id_cursus}}</td>
+
+                        <td class="align-middle">{{item.firstname}}</td>
+                        <td class="align-middle">{{item.lastname}}</td>
+                        <td class="align-middle">{{item.cin}}</td>
+                        <td class="align-middle">{{item.email}}</td>
+                        <td class="align-middle">{{item.adrs}}</td>
+                        <td class="align-middle">{{item.tel}}</td>
+                        <td class="align-middle">{{item.date}}</td>
+                        <td class="align-middle">{{item.situation}}</td>
+                        <td class="align-middle">
+                            <button class="btn btn-sm btn-danger"  (click)="delete(item)">
+                                <i class="fas fa-trash-alt"></i> Supprimer
+                            </button>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <div *ngIf="listDemandeCursus.length == 0" class="alert alert-warning">Aucun Message trouvé</div>
+
+        </div>
+    </div>
+</div>

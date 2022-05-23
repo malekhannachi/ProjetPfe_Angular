@@ -29,7 +29,7 @@
                             <div class="form-group">
                                 <label>Nom :</label>
                                 <input type="text" class="form-control" placeholder="Entrer votre nom"
-                                    formControlName="name">
+                                    formControlName="lastname">
                                 <div *ngIf="lastname?.touched && lastname?.invalid">
                                     <small class="text-danger" *ngIf="lastname?.errors?.['required']">nom
                                         est obligatoire</small>
@@ -43,9 +43,9 @@
                             <div class="form-group">
                                 <label>Prénom :</label>
                                 <input type="text" class="form-control" placeholder="Entrer votre prénom"
-                                    formControlName="name">
-                                <div *ngIf="lastname?.touched && lastname?.invalid">
-                                    <small class="text-danger" *ngIf="lastname?.errors?.['required']">nom
+                                    formControlName="firstname">
+                                <div *ngIf="firstname?.touched && firstname?.invalid">
+                                    <small class="text-danger" *ngIf="firstname?.errors?.['required']">prénom
                                         est obligatoire</small>
 
                                 </div>
