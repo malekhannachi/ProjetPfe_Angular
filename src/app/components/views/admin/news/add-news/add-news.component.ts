@@ -22,7 +22,7 @@ export class AddNewsComponent implements OnInit {
   imgURL: any="";
   public message!: string ;
 
-  newProduit= new News(undefined,undefined,undefined,this.imgURL)
+
 
   constructor(
     private fb: FormBuilder,

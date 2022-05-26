@@ -43,7 +43,8 @@
 
                 <div class="form-group">
                     <label for="photo" id="photo">Image : </label>
-                    <input type="file" class="form-control-file" formControlName="image" accept="image/*" (change)="onSelectFile($event)"> 
+                    <input type="file" class="form-control-file" formControlName="image" accept="image/*"
+                        (change)="onSelectFile($event)">
                     <div *ngIf="image?.touched && image?.invalid">
                         <small class="text-danger" *ngIf="image?.errors?.['required']">image
                             est obligatoire</small>
@@ -52,7 +53,7 @@
                     <img [src]="imgURL" height="200" *ngIf="imgURL">
                 </div>
 
-               
+
 
                 <button type="submit" class="btn btn-sm btn-info mt-3" [disabled]="addForm.invalid">Ajouter</button>
             </form>

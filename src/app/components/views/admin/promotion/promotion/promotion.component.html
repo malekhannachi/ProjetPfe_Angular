@@ -1,0 +1,54 @@
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Gestion des promotions</h1>
+    </div>
+    <div>
+        <a routerLink="add-promotion" class="btn btn-sm btn-info mb-2">Ajouter un promotion</a>
+    </div>
+
+</div>
+<div class="col ml-2">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary"> Liste des promotions</h6>
+        </div>
+
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom </th>
+                        <th>Année</th>
+
+                        <th>Actions</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of promotionList">
+                        <td class="align-middle">{{item.id}}</td>
+
+                        <td class="align-middle">{{item.name_pro}}</td>
+                        <td class="align-middle">{{item.year_prp}}</td>
+
+
+                        <td class="align-middle">
+                            <a routerLink="update-promotion/{{item.id}}" class="btn btn-sm btn-warning mx-2">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <button class="btn btn-sm btn-danger" (click)="deletePromtion(item)">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <div *ngIf="promotionList.length == 0" class="alert alert-warning">Aucun promtion trouvé</div>
+
+        </div>
+    </div>
+</div>

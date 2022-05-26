@@ -287,6 +287,21 @@ const routes: Routes = [
             (m) => m.EventModule
           ),
       },
+      
+      {
+        path: 'promotion',
+        loadChildren: () =>
+          import('./components/views/admin/promotion/promotion.module').then(
+            (m) => m.PromotionModule
+          ),
+      },
+      {
+        path: '',
+        loadChildren: () =>
+          import('./components/views/admin/promotion/promotion.module').then(
+            (m) => m.PromotionModule
+          ),
+      },
     ],
   },
   { path: '**', component: PageInvalidComponent },

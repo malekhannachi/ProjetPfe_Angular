@@ -1,4 +1,5 @@
-import { Groupe } from './groupe';
+
+import { Promotion } from './promotion';
 
 export class Student {
   constructor(
@@ -13,6 +14,6 @@ export class Student {
     public nature_bac?: String,
     public annee_bac?: String,
     public accountState?: Boolean,
-    public groupe?: Groupe
+    public promotion?: Promotion
   ) {}
 }
