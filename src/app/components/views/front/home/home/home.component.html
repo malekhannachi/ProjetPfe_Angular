@@ -12,7 +12,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-12 left-box">
-                <div class="card single_post" *ngFor="let item of ListNews | paginate: {
+                <div class="card single_post" *ngFor="let item of ListNews | filter: filterTerm | paginate: {
             id: 'ListNews',
             itemsPerPage: limit,
             currentPage: currentPage,
@@ -50,8 +50,7 @@
                 <div class="card">
                     <div class="card-body search">
                         <div class="input-group m-b-0">
-                            <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="titre"
-                                (input)="filterByName(titre)">
+                            <input type="text" class="form-control" placeholder="Search..."  [(ngModel)]="filterTerm">
 
                         </div>
                     </div>

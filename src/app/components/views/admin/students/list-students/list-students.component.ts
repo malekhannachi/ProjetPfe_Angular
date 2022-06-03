@@ -39,33 +39,53 @@ export class ListStudentsComponent implements OnInit {
   updateStudentState(student: Student) {
     console.log(student);
 
-    let index=this.listStudent.indexOf(student);
-    if(student.accountState==true)
-    {let newStudent=new Student(student.id_student,student.cin,student.num_ins,student.firstname,student.lastname,student.date,student.lieu_naissance,
-      student.classe,student.nature_bac,student.annee_bac,false)
-  this.studentService.updateStudent(newStudent).subscribe
-  (
-    res=>{console.log(res)
-    this.listStudent[index]=newStudent
-    },
-    err=>console.log(err)
-  )
+    let index = this.listStudent.indexOf(student);
+    if (student.accountState == true) {
+      let newStudent = new Student(
+        student.id_student,
+        student.cin,
+        student.num_ins,
+        student.firstname,
+        student.lastname,
+        student.date,
+        student.lieu_naissance,
+        student.nature_bac,
+        student.annee_bac,
+        false,
+        student.promotion,
+        student.groupe
+      );
+      console.log(newStudent);
+      this.studentService.updateStudent(newStudent).subscribe(
+        (res) => {
+          console.log(res);
+          this.listStudent[index] = newStudent;
+        },
+        (err) => console.log(err)
+      );
+    } else {
+      let newStudent = new Student(
+        student.id_student,
+        student.cin,
+        student.num_ins,
+        student.firstname,
+        student.lastname,
+        student.date,
+        student.lieu_naissance,
+        student.nature_bac,
+        student.annee_bac,
+        true,
+        student.promotion,
+        student.groupe
+      );
+      console.log(newStudent);
+      this.studentService.updateStudent(newStudent).subscribe(
+        (res) => {
+          console.log(res);
+          this.listStudent[index] = newStudent;
+        },
+        (err) => console.log(err)
+      );
     }
-   
-    else{
-
-      let newStudent=new Student(student.id_student,student.cin,student.num_ins,student.firstname,student.lastname,student.date,student.lieu_naissance,
-        student.classe,student.nature_bac,student.annee_bac,true)
-    this.studentService.updateStudent(newStudent).subscribe
-    (
-      res=>{console.log(res)
-      this.listStudent[index]=newStudent
-      },
-      err=>console.log(err)
-    )
-
-    }
-
-   
   }
 }

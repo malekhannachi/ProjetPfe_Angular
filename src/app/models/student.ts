@@ -1,4 +1,5 @@
 
+import { Groupe } from './groupe';
 import { Promotion } from './promotion';
 
 export class Student {
@@ -10,10 +11,11 @@ export class Student {
     public lastname?: String,
     public date?: Date,
     public lieu_naissance?: String,
-    public classe?: String,
+
     public nature_bac?: String,
     public annee_bac?: String,
     public accountState?: Boolean,
-    public promotion?: Promotion
+    public promotion?: Promotion,
+    public groupe?:Groupe
   ) {}
 }

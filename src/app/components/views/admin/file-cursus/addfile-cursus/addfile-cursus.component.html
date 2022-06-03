@@ -1,0 +1,66 @@
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Ajouter une Actualité</h1>
+    </div>
+
+</div>
+<div class="col">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h6 class="m-0 font-weight-bold text-info">Ajouter une actualité </h6>
+        </div>
+
+        <div class="card-body">
+            <form [formGroup]="addForm" (ngSubmit)="addNews()">
+                <div class="form-group">
+                    <label for="titre" id="titre">Titre : </label>
+                    <input type="text" class="form-control" formControlName="titre">
+                    <div *ngIf="titre?.touched && titre?.invalid">
+                        <small class="text-danger" *ngIf="titre?.errors?.['required']">champ
+                            est obligatoire</small>
+                        <small class="text-danger" *ngIf="titre?.errors?.['pattern']">champ est
+                            inccorect</small>
+                        <small class="text-danger" *ngIf="titre?.errors?.['minLength']">minuim 4 caractéres
+                        </small>
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="description" id="description">Description : </label>
+                    <input type="text" class="form-control" formControlName="description">
+                    <div *ngIf="description?.touched && description?.invalid">
+                        <small class="text-danger" *ngIf="description?.errors?.['required']">champ
+                            est obligatoire</small>
+                        <small class="text-danger" *ngIf="description?.errors?.['pattern']">champ est
+                            inccorect</small>
+                        <small class="text-danger" *ngIf="description?.errors?.['maxLength']">max 30 caractéres
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="photo" id="photo">Image : </label>
+                    <input type="file" class="form-control-file" formControlName="image" accept="application/pdf"
+                        (change)="onSelectFile($event)" >
+                    <div *ngIf="image?.touched && image?.invalid">
+                        <small class="text-danger" *ngIf="image?.errors?.['required']">image
+                            est obligatoire</small>
+                    </div>
+                    <br>
+                   
+                    <input type="file" (change)="onselectt($event)">
+                    <img [src]="url" >
+                    <a [href]="url">download</a>
+             
+                </div>
+
+
+
+                <button type="submit" class="btn btn-sm btn-info mt-3" [disabled]="addForm.invalid">Ajouter</button>
+            </form>
+        </div>
+    </div>
+</div>

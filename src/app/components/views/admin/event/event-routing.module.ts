@@ -6,6 +6,7 @@ import { UpdateEventComponent } from './update-event/update-event.component';
 
 const routes: Routes = [ { path: 'list-event', component: ListEventComponent },
 { path: '', component: ListEventComponent },
+
 { path: 'add-event', component: AddEventComponent },
 { path: 'update-event/:id', component: UpdateEventComponent },];
 

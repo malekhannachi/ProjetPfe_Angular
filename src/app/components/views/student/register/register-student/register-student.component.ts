@@ -22,12 +22,15 @@ import { StudentService } from 'src/app/services/student.service';
 export class RegisterStudentComponent implements OnInit {
   registerForm: FormGroup;
   promotionList: any[] = [];
+  groupeList: any[] = [];
+
   constructor(
     private fb: FormBuilder,
     private studentService: StudentService,
     private router: Router,
     private toast: NgToastService,
-    private promotionService: PromotionService
+    private promotionService: PromotionService,
+    private groupeService: GroupeService
   ) {
     let formControls = {
       firstname: new FormControl('', [
@@ -55,7 +58,7 @@ export class RegisterStudentComponent implements OnInit {
         Validators.required,
         Validators.pattern("[a-zA-Z'-]+"),
       ]),
-      classe: new FormControl('', [
+      promotion: new FormControl('', [
         Validators.required,
         Validators.pattern("[a-zA-Z'-]+"),
       ]),
@@ -90,8 +93,8 @@ export class RegisterStudentComponent implements OnInit {
   get date() {
     return this.registerForm.get('date');
   }
-  get classe() {
-    return this.registerForm.get('classe');
+  get promotion() {
+    return this.registerForm.get('promotion');
   }
   get groupe() {
     return this.registerForm.get('groupe');
@@ -125,12 +128,11 @@ export class RegisterStudentComponent implements OnInit {
       data.lastname,
       data.date,
       data.lieu_naissance,
-      data.classe,
 
       data.nature_bac,
       data.annee_bac,
       true,
-      new Promotion(data.groupe.id)
+      new Promotion(data.promotion.id)
     );
     console.log(student);
     if (
@@ -142,8 +144,8 @@ export class RegisterStudentComponent implements OnInit {
       data.lieu_naissance == 0 ||
       data.annee_bac == 0 ||
       data.nature_bac == 0 ||
-      data.class == 0 ||
-      data.group == 0
+      data.promotion == 0 ||
+      data.groupe == 0
     ) {
       this.toast.error({
         detail: 'Error Message',
@@ -166,5 +168,13 @@ export class RegisterStudentComponent implements OnInit {
         }
       );
     }
+  }
+  onChange(promotion: any) {
+    console.log(promotion.target.value);
+    this.groupeService.getAllGroupe().subscribe((result) => {
+      this.groupeList = result;
+      this.groupeList.filter((grp) => {grp.id==promotion.target.value});
+      console.log(this.groupeList);
+    });
   }
 }

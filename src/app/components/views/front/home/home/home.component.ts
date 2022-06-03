@@ -10,6 +10,7 @@ export class HomeComponent implements OnInit {
   ListNews: any[] = [];
   news: any[] = [];
   titre: string = '';
+  filterTerm!: string;
 
   numberOfcat: number = 0;
   limit: any = 3;

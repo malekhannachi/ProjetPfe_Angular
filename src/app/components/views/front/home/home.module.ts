@@ -5,6 +5,7 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
   ],
   imports: [
     CommonModule,
-    HomeRoutingModule,FormsModule,NgxPaginationModule
+    HomeRoutingModule,FormsModule,NgxPaginationModule,Ng2SearchPipeModule
 
   ]
 })

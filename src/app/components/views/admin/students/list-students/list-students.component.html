@@ -22,9 +22,9 @@
                         <th>Prénom</th>
                         <th>Nom</th>
                         <th>date de naissance</th>
-                        <th>Classe</th>
+                        <th>Promotion</th>
                         <th>groupe</th>
-                        <th>Nature de Bac</th>
+                        <th>Bac</th>
                         <th>anneé de Bac</th>
 
                         <th>État du compte</th>
@@ -40,8 +40,9 @@
                         <td class="align-middle">{{student.lastname}}</td>
                         <td class="align-middle">{{student.firstname}}</td>
                         <td class="align-middle">{{student.date}}</td>
-                        <td class="align-middle">0{{student.classe}}</td>
-                        <td class="align-middle">{{student.groupe?.namegroupe}}</td>
+                        <td class="align-middle"><a routerLink="/admin/promotion">{{student.promotion?.name_pro}}</a>
+                        </td>
+                        <td class="align-middle"><a routerLink="/admin/groupe">{{student.groupe?.namegroupe}}</a></td>
 
                         <td class="align-middle">{{student.nature_bac}}</td>
                         <td class="align-middle">{{student.annee_bac}}</td>

@@ -162,12 +162,12 @@
                         <div class="input-field">
                             <label>Promotion</label>
                             
-                            <select  formControlName="groupe">
-                                <option value="" selected hidden>Choisir Promotion</option>
+                            <select  formControlName="promotion" (change)="onChange($event)">
+                                <option value="" selected hidden>--Choisir Promotion --</option>
                                 <option [ngValue]="prm" *ngFor="let prm of promotionList">{{prm.name_pro}}</option>
                               </select>
-                            <div *ngIf="groupe?.invalid && (groupe?.dirty || groupe?.touched)">
-                                <small *ngIf="groupe?.errors?.['required']" class="text-danger">
+                            <div *ngIf="promotion?.invalid && (promotion?.dirty || promotion?.touched)">
+                                <small *ngIf="promotion?.errors?.['required']" class="text-danger">
                                      Promotion est obligatoire.
                                 </small>
                               
@@ -178,14 +178,15 @@
 
                         <div class="input-field">
                             <label>Groupe</label>
-                            <input type="text" placeholder="Enter la Groupe" formControlName="classe">
-                            <div *ngIf="classe?.invalid && (classe?.dirty || classe?.touched)">
-                                <small *ngIf="classe?.errors?.['required']" class="text-danger">
+                            <select  formControlName="groupe" >
+                                <option value="" selected hidden>-- Choisir Groupe --</option>
+                                <option [ngValue]="grp" *ngFor="let grp of groupeList">{{grp.namegroupe}}</option>
+                              </select>
+                            <div *ngIf="groupe?.invalid && (groupe?.dirty || groupe?.touched)">
+                                <small *ngIf="groupe?.errors?.['required']" class="text-danger">
                                     Le Groupe est obligatoire.
                                 </small>
-                                <small *ngIf="classe?.errors?.['pattern']" class="text-danger">
-                                    Le Groupe est inccorect.
-                                </small>
+                           
                             </div>
                         </div>
 

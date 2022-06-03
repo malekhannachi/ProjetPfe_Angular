@@ -6,6 +6,7 @@ import { LayoutsModule } from './components/layouts/layouts.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgToastModule } from 'ng-angular-popup';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [AppComponent,],
@@ -16,7 +17,7 @@ import { NgToastModule } from 'ng-angular-popup';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgToastModule,
+    NgToastModule,Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent],

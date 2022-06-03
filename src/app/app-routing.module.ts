@@ -302,6 +302,23 @@ const routes: Routes = [
             (m) => m.PromotionModule
           ),
       },
+      {
+        path: 'groupe',
+        loadChildren: () =>
+          import('./components/views/admin/groupe/groupe.module').then(
+            (m) => m.GroupeModule
+          ),
+      },
+
+      
+      
+      {
+        path: 'file-cursus',
+        loadChildren: () =>
+          import('./components/views/admin/file-cursus/file-cursus.module').then(
+            (m) => m.FileCursusModule
+          ),
+      }
     ],
   },
   { path: '**', component: PageInvalidComponent },
