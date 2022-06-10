@@ -77,7 +77,11 @@ export class AddGroupeComponent implements OnInit {
       this.groupeService.addGroupe(group).subscribe((result) => {
         console.log(result);
         this.route.navigate(['admin/groupe'])
-        
+        this.toast.success({
+          detail: ' Message',
+          summary: 'groupe est ajouté',
+          duration: 2000,
+        });
       });
     }
   }

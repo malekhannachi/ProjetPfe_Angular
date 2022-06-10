@@ -6,6 +6,12 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
+import { DocumentEns } from 'src/app/models/document-ens';
+import { Teacher } from 'src/app/models/teacher';
+import { StudentService } from 'src/app/services/student.service';
+import { TeacherService } from 'src/app/services/teacher.service';
+import { UploadFileService } from 'src/app/services/upload-file.service';
 
 @Component({
   selector: 'app-addfile-cursus',
@@ -13,95 +19,63 @@ import { Router } from '@angular/router';
   styleUrls: ['./addfile-cursus.component.css'],
 })
 export class AddfileCursusComponent implements OnInit {
-  addForm: FormGroup;
+  listTeacher: any;
+  constructor(
+    private fb: FormBuilder,
+    private route: Router,
+    private service: UploadFileService,
+    private toast: NgToastService,
+    private st: TeacherService
+  ) {}
 
-  userFile: any;
-  public imagePath: any;
-  imgURL: any = '';
-  public message!: string;
+  addForm = this.fb.group({
+    type: [''],
 
-  url = '';
+    course_image: [File],
+    teacher: [''],
+  });
 
-  constructor(private fb: FormBuilder, private route: Router) {
-    let formControles = {
-      titre: new FormControl('', [
-        Validators.required,
-        Validators.pattern("[a-z A-Z 0-9 , é à-ô .'-]+"),
-        Validators.minLength(4),
-      ]),
-      description: new FormControl('', [
-        Validators.required,
-        Validators.pattern("[a-z  A-Z 0-9 , .'-]+"),
-        Validators.maxLength(200),
-      ]),
-      image: new FormControl('', [Validators.required]),
-    };
-    this.addForm = this.fb.group(formControles);
+  ngOnInit(): void {
+    this.st.getAllTeachers().subscribe((result) => {
+      this.listTeacher=result
+      console.log(result);
+      
+    });
   }
-
-  get titre() {
-    return this.addForm.get('titre');
-  }
-  get description() {
-    return this.addForm.get('description');
-  }
-  get image() {
-    return this.addForm.get('image');
-  }
-
-  ngOnInit(): void {}
 
   addNews() {
     let data = this.addForm.value;
 
     console.log(data);
+
+    let newCourse = new DocumentEns(
+      undefined,
+      data.type,
+
+      data.course_image.name, new Teacher(data.teacher.id_teacher)
+    );
+    console.log(newCourse);
+
+    console.log(data.course_image);
+    this.service
+      .addDocument(newCourse, data.course_image)
+      .subscribe((result) => {
+        console.log(result);
+        this.route.navigate(['admin/file-cursus']);
+        this.toast.success({
+          detail: ' Message',
+          summary: 'document est ajouté',
+          duration: 2000,
+        });
+      });
   }
 
-  onSelectFile(event: any) {
+  onImageChange(event: any) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
-      this.userFile = file;
-      // this.f['profile'].setValue(file);
-
-      var mimeType = event.target.files[0].type;
-      if (mimeType.match(/pdf\/*/) == null) {
-        this.message = 'Only pdf are supported.';
-        return;
-      }
-
-      var reader = new FileReader();
-
-      this.imagePath = file;
-      reader.readAsDataURL(file);
-      reader.onload = (_event) => {
-        this.imgURL = reader.result;
-        var a = document.createElement('a');
-        a.href = this.imgURL;
-      };
-    }
-  }
-
-  onselect(event: any) {
-    if (event.target.files[0]) {
-      var reader = new FileReader();
-      reader.readAsDataURL(event.target.files[0]);
-      console.log(event.target.files[0]);
-
-      reader.onload = (e: any) => {
-        this.url = event.target.result;
-      
-      };
-    }
-  }
-
-  onselectt(e: any) {
-    if (e.target.files) {
-      var reader = new FileReader();
-      reader.readAsDataURL(e.target.files[0]);
-      console.log(e.target.files[0]);
-
-      reader.onload = (event: any) => (this.url = event.target.result);
-      console.log(this.url);
+      this.addForm.patchValue({
+        course_image: file,
+      });
     }
   }
 }

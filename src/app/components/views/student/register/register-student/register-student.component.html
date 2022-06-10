@@ -162,7 +162,7 @@
                         <div class="input-field">
                             <label>Promotion</label>
                             
-                            <select  formControlName="promotion" (change)="onChange($event)">
+                            <select  formControlName="promotion"  (change)="onChange()">
                                 <option value="" selected hidden>--Choisir Promotion --</option>
                                 <option [ngValue]="prm" *ngFor="let prm of promotionList">{{prm.name_pro}}</option>
                               </select>
@@ -180,7 +180,7 @@
                             <label>Groupe</label>
                             <select  formControlName="groupe" >
                                 <option value="" selected hidden>-- Choisir Groupe --</option>
-                                <option [ngValue]="grp" *ngFor="let grp of groupeList">{{grp.namegroupe}}</option>
+                                <option [ngValue]="grp" *ngFor="let grp of groupeList">{{grp.promotions.name_pro}} {{grp.namegroupe}}</option>
                               </select>
                             <div *ngIf="groupe?.invalid && (groupe?.dirty || groupe?.touched)">
                                 <small *ngIf="groupe?.errors?.['required']" class="text-danger">

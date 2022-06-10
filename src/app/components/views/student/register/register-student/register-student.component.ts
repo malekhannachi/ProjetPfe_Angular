@@ -23,6 +23,7 @@ export class RegisterStudentComponent implements OnInit {
   registerForm: FormGroup;
   promotionList: any[] = [];
   groupeList: any[] = [];
+  products = [];
 
   constructor(
     private fb: FormBuilder,
@@ -132,7 +133,8 @@ export class RegisterStudentComponent implements OnInit {
       data.nature_bac,
       data.annee_bac,
       true,
-      new Promotion(data.promotion.id)
+      new Promotion(data.promotion.id),
+      new Groupe(data.groupe.id)
     );
     console.log(student);
     if (
@@ -169,12 +171,15 @@ export class RegisterStudentComponent implements OnInit {
       );
     }
   }
-  onChange(promotion: any) {
-    console.log(promotion.target.value);
+  onChange() {
+
+   
     this.groupeService.getAllGroupe().subscribe((result) => {
-      this.groupeList = result;
-      this.groupeList.filter((grp) => {grp.id==promotion.target.value});
+      this.groupeList = result
       console.log(this.groupeList);
+      
+   
+     
     });
   }
 }
