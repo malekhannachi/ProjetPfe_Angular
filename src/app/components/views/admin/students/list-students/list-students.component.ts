@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgToastService } from 'ng-angular-popup';
 import { Student } from 'src/app/models/student';
 import { StudentService } from 'src/app/services/student.service';
 
@@ -9,7 +10,10 @@ import { StudentService } from 'src/app/services/student.service';
 })
 export class ListStudentsComponent implements OnInit {
   listStudent: any = [];
-  constructor(private studentService: StudentService) {}
+  constructor(
+    private studentService: StudentService,
+    private toast: NgToastService
+  ) {}
 
   ngOnInit(): void {
     this.studentService.getAllStudents().subscribe(
@@ -24,16 +28,24 @@ export class ListStudentsComponent implements OnInit {
   }
 
   deleleStudent(student: any) {
-    this.studentService.deleteStudent(student.id_student).subscribe(
-      (res) => {
-        let index = this.listStudent.indexOf(student);
-        this.listStudent.splice(index, 1);
-        console.log(res);
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+    if (confirm('Voulez vous supprimer cette Etudiant ?')) {
+      this.studentService.deleteStudent(student.id_student).subscribe(
+        (res) => {
+          let index = this.listStudent.indexOf(student);
+          this.listStudent.splice(index, 1);
+          console.log(res);
+
+          this.toast.error({
+            detail: ' Message',
+            summary: 'Etudiant est Supprimé',
+            duration: 2000,
+          });
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+    }
   }
 
   updateStudentState(student: Student) {
@@ -56,13 +68,20 @@ export class ListStudentsComponent implements OnInit {
         student.groupe
       );
       console.log(newStudent);
-      this.studentService.updateStudent(newStudent).subscribe(
-        (res) => {
-          console.log(res);
-          this.listStudent[index] = newStudent;
-        },
-        (err) => console.log(err)
-      );
+      if (confirm('Voulez vous bloquer cette Etudiant ?')) {
+        this.studentService.updateStudent(newStudent).subscribe(
+          (res) => {
+            console.log(res);
+            this.listStudent[index] = newStudent;
+            this.toast.info({
+              detail: ' Information',
+              summary: 'Etudiant est Bloqué',
+              duration: 2000,
+            });
+          },
+          (err) => console.log(err)
+        );
+      }
     } else {
       let newStudent = new Student(
         student.id_student,
@@ -79,13 +98,22 @@ export class ListStudentsComponent implements OnInit {
         student.groupe
       );
       console.log(newStudent);
-      this.studentService.updateStudent(newStudent).subscribe(
-        (res) => {
-          console.log(res);
-          this.listStudent[index] = newStudent;
-        },
-        (err) => console.log(err)
-      );
+      if (confirm('Voulez vous débloquer cette Etudiant ?'))
+      {
+        this.studentService.updateStudent(newStudent).subscribe(
+          (res) => {
+            console.log(res);
+            this.listStudent[index] = newStudent;
+            this.toast.info({
+              detail: ' Information',
+              summary: 'Etudiant est Déblouqué',
+              duration: 2000,
+            });
+          },
+          (err) => console.log(err)
+        );
+      }
+  
     }
   }
 }

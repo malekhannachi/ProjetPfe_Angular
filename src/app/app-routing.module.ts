@@ -318,7 +318,15 @@ const routes: Routes = [
           import('./components/views/admin/file-cursus/file-cursus.module').then(
             (m) => m.FileCursusModule
           ),
-      }
+      },
+      
+      {
+        path: 'document',
+        loadChildren: () =>
+          import('./components/views/admin/document/document.module').then(
+            (m) => m.DocumentModule
+          ),
+      },
     ],
   },
   { path: '**', component: PageInvalidComponent },

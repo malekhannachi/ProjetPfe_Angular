@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TimetablePromotionComponent } from './timetable-promotion.component';
+import { AddDocumentComponent } from './add-document.component';
 
-describe('TimetablePromotionComponent', () => {
-  let component: TimetablePromotionComponent;
-  let fixture: ComponentFixture<TimetablePromotionComponent>;
+describe('AddDocumentComponent', () => {
+  let component: AddDocumentComponent;
+  let fixture: ComponentFixture<AddDocumentComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TimetablePromotionComponent ]
+      declarations: [ AddDocumentComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TimetablePromotionComponent);
+    fixture = TestBed.createComponent(AddDocumentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TimetableSatComponent } from './timetable-sat.component';
+import { ListDocumentComponent } from './list-document.component';
 
-describe('TimetableSatComponent', () => {
-  let component: TimetableSatComponent;
-  let fixture: ComponentFixture<TimetableSatComponent>;
+describe('ListDocumentComponent', () => {
+  let component: ListDocumentComponent;
+  let fixture: ComponentFixture<ListDocumentComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TimetableSatComponent ]
+      declarations: [ ListDocumentComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TimetableSatComponent);
+    fixture = TestBed.createComponent(ListDocumentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

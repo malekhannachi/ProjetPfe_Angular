@@ -46,8 +46,10 @@ export class RegisterStudentComponent implements OnInit {
       ]),
       cin: new FormControl('', [
         Validators.required,
-        Validators.min(10000000),
-        Validators.max(99999999),
+        Validators.maxLength(8),
+        Validators.pattern("^[0-9]*$")
+
+      
       ]),
       num_ins: new FormControl('', [
         Validators.required,
@@ -71,7 +73,7 @@ export class RegisterStudentComponent implements OnInit {
       annee_bac: new FormControl('', [
         Validators.required,
         Validators.max(2021),
-        Validators.min(2015),
+        Validators.min(2005),
       ]),
     };
     this.registerForm = this.fb.group(formControls);
@@ -150,7 +152,7 @@ export class RegisterStudentComponent implements OnInit {
       data.groupe == 0
     ) {
       this.toast.error({
-        detail: 'Error Message',
+        detail: 'Attention',
         summary: 'Rempir votre champs',
         duration: 2000,
       });

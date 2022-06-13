@@ -37,9 +37,8 @@ export class AddfileCursusComponent implements OnInit {
 
   ngOnInit(): void {
     this.st.getAllTeachers().subscribe((result) => {
-      this.listTeacher=result
+      this.listTeacher = result;
       console.log(result);
-      
     });
   }
 
@@ -52,22 +51,32 @@ export class AddfileCursusComponent implements OnInit {
       undefined,
       data.type,
 
-      data.course_image.name, new Teacher(data.teacher.id_teacher)
+      data.course_image.name,
+      new Teacher(data.teacher.id_teacher)
     );
     console.log(newCourse);
 
     console.log(data.course_image);
-    this.service
-      .addDocument(newCourse, data.course_image)
-      .subscribe((result) => {
-        console.log(result);
-        this.route.navigate(['admin/file-cursus']);
-        this.toast.success({
-          detail: ' Message',
-          summary: 'document est ajouté',
-          duration: 2000,
-        });
+
+    if (data.type == 0 || data.course_image == 0 || data.teacher == 0) {
+      this.toast.error({
+        detail: 'Error Message',
+        summary: 'Rempir votre champs',
+        duration: 2000,
       });
+    } else {
+      this.service
+        .addDocument(newCourse, data.course_image)
+        .subscribe((result) => {
+          console.log(result);
+          this.route.navigate(['admin/file-cursus']);
+          this.toast.success({
+            detail: ' Message',
+            summary: 'document est ajouté',
+            duration: 2000,
+          });
+        });
+    }
   }
 
   onImageChange(event: any) {

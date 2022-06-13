@@ -76,16 +76,16 @@
 
                         <div class="input-field">
                             <label>Carte d'identité</label>
-                            <input type="text" placeholder="Entrer le Carte d'identité" formControlName="cin">
+                            <input type="text" placeholder="Entrer le Carte d'identité"  formControlName="cin">
                             <div *ngIf="cin?.invalid && (cin?.dirty || cin?.touched)">
                                 <small *ngIf="cin?.errors?.['required']" class="text-danger">
                                     Le cin est obligatoire.
                                 </small>
-                                <small *ngIf="cin?.errors?.['max']" class="text-danger">
+                                <small *ngIf="cin?.errors?.['maxLength']" class="text-danger">
                                     Le cin doit comporter au moins 8 caractères.
                                 </small>
-                                <small *ngIf="cin?.errors?.['min']" class="text-danger">
-                                    Le cin doit comporter au moins 8 caractères.
+                                <small *ngIf="cin?.errors?.['pattern']" class="text-danger">
+                                    Le cin doit comporter au moins   g8 caractères.
                                 </small>
 
                             </div>
@@ -150,10 +150,10 @@
                                     Année de bac est obligatoire.
                                 </small>
                                 <small *ngIf="annee_bac?.errors?.['max']" class="text-danger">
-                                    Année de bac entre 2015 et 2021.
+                                    Année de bac entre 2005 et 2021.
                                 </small>
                                 <small *ngIf="annee_bac?.errors?.['min']" class="text-danger">
-                                    Année de bac entre 2015 et 2021.
+                                    Année de bac entre 2005 et 2021.
                                 </small>
 
                             </div>

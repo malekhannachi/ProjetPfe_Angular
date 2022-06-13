@@ -21,7 +21,7 @@ export class AuthStudentComponent implements OnInit {
     private fb: FormBuilder,
     private studentService: StudentService,
     private route: Router,
-    private toast:NgToastService
+    private toast: NgToastService
   ) {
     let formControlls = {
       cin: new FormControl('', [
@@ -58,9 +58,12 @@ export class AuthStudentComponent implements OnInit {
     console.log(student);
 
     if (data.cin == 0 || data.password == 0) {
-      alert('Remplir Votre champs');
-    } 
-    else {
+      this.toast.error({
+        detail: 'Attention',
+        summary: 'Remplir Votre champs',
+        duration: 2000,
+      });
+    } else {
       this.studentService.loginStudent(student).subscribe(
         (result) => {
           console.log(result);
@@ -75,11 +78,8 @@ export class AuthStudentComponent implements OnInit {
             summary: error.error.message,
             duration: 2000,
           });
-
-
-        
         }
-      )
+      );
     }
   }
 }

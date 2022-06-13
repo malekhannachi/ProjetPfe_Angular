@@ -17,26 +17,8 @@
                             </li>
                             <li class="nav-item active"><a class="nav-link" routerLink="/">Accueil</a></li>
 
-                            <li class="nav-item dropdown" *ngIf="ts.isLoggedInTeacher()">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">L'emploi du
-                                    temps</a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                                    <a class="dropdown-item" routerLink="timetable/saturday-grouping">L'emploi du temps
-                                        des regroupements
-                                        Samedi</a>
-                                    <a class="dropdown-item" routerLink="timetable/sunday-grouping">L'emploi du temps
-                                        des regroupements
-                                        Dimanche</a>
-                                    <a class="dropdown-item" routerLink="timetable/tutorat">L'emploi du temps des
-                                        tutorats</a>
-                                    <a class="dropdown-item" routerLink="timetable/promotion">L'emploi du temps de la
-                                        promotion</a>
-
-
-                                </div>
-                            </li>
+                            <li class="nav-item active"><a class="nav-link" *ngIf="ts.isLoggedInTeacher()" routerLink="timetable">Consultation l'emploi du temps</a></li>
+                      
                         </ul>
                         <form class="form-inline my-2 my-lg-0">
 
@@ -53,7 +35,7 @@
                             <button *ngIf="ts.isLoggedInTeacher()" class="btn btn-danger my-2 mx-3" type="submit"
                                 (click)="logout()">
                                 <i class="bi bi-box-arrow-in-right"></i>
-                                Déconnexion
+                                Se déconnecter
 
                             </button>
 

@@ -71,8 +71,8 @@ export class AuthTeacherComponent implements OnInit {
     console.log(teacher);
 
     if (data.cin == 0 || data.password == 0) {
-      this.toast.info({
-        detail: 'info Message',
+      this.toast.error({
+        detail: 'Attention',
         summary: 'Remplir Votre champs',
         duration: 2000,
       });
@@ -84,7 +84,7 @@ export class AuthTeacherComponent implements OnInit {
           let token = res.token;
           localStorage.setItem('TokenTeacher', token);
 
-          this.router.navigate(['teacher/account-teacher']);
+          this.router.navigate(['teacher/timetable']);
         },
         (error) => {
           console.log(error);

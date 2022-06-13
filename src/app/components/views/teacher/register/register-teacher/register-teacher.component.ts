@@ -119,7 +119,7 @@ export class RegisterTeacherComponent implements OnInit {
       data.departement == 0
     ) {
       this.toast.error({
-        detail: 'Error Message',
+        detail: 'Attention',
         summary: 'Rempir votre champs',
         duration: 2000,
       });
